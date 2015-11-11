@@ -204,9 +204,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "responseEventArray(_:)"
-            landmarkType = "5">
+            endingLineNumber = "134">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

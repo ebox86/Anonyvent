@@ -579,12 +579,13 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/scripts/set_build_number.sh",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = $SRCROOT/scripts/set_build_number.sh;
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
