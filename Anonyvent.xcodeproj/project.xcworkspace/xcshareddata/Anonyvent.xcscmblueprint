@@ -1,0 +1,18 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A9D4E4275308A9043BF4DDE5DA3BFD629FCB2384",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3" : 0,
+    "A9D4E4275308A9043BF4DDE5DA3BFD629FCB2384" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4297EBF1-99E8-4B09-BBC2-5F7848557571",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "A9D4E4275308A9043BF4DDE5DA3BFD629FCB2384" : "Anonyvent\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Anonyvent",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Anonyvent.xcodeproj"
+  
+}
