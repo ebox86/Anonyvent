@@ -289,6 +289,7 @@
 				A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */,
 				A6CB4FDB1BE703A70027DF25 /* TableViewControllers */,
 				A6CB4FA31BE6B6F10027DF25 /* AppDelegate.swift */,
+				A62B52911BF45EC600B971FB /* EventsHomeViewController.swift */,
 				A6A22ED11BF2C7EC00C9852B /* EventPost.swift */,
 				A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */,
 				A6CB4FA71BE6B6F10027DF25 /* Main.storyboard */,
@@ -328,7 +329,6 @@
 			isa = PBXGroup;
 			children = (
 				A6CB4FD51BE6C6810027DF25 /* EventTableViewController.swift */,
-				A62B52911BF45EC600B971FB /* EventsHomeViewController.swift */,
 			);
 			name = TableViewControllers;
 			sourceTree = "<group>";
