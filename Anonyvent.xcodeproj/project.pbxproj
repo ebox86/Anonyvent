@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A62B52921BF45EC600B971FB /* EventsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62B52911BF45EC600B971FB /* EventsHomeViewController.swift */; };
 		A6A22E0B1BEACD4300C9852B /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */; };
 		A6A22E0D1BF0843B00C9852B /* httpConnectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0C1BF0843B00C9852B /* httpConnectionHandler.swift */; };
 		A6A22E0F1BF09B2A00C9852B /* JsonSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */; };
@@ -175,6 +176,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A62B52911BF45EC600B971FB /* EventsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsHomeViewController.swift; path = ../../../../macair/Development/Anonyvent/Anonyvent/EventsHomeViewController.swift; sourceTree = "<group>"; };
 		A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		A6A22E0C1BF0843B00C9852B /* httpConnectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = httpConnectionHandler.swift; sourceTree = "<group>"; };
 		A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonSerializer.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				A6CB4FD51BE6C6810027DF25 /* EventTableViewController.swift */,
+				A62B52911BF45EC600B971FB /* EventsHomeViewController.swift */,
 			);
 			name = TableViewControllers;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				A6CB4FE31BE8A96A0027DF25 /* MainTabBarViewController.swift in Sources */,
 				A6A22E0F1BF09B2A00C9852B /* JsonSerializer.swift in Sources */,
 				A6CB4FD81BE6CADD0027DF25 /* Event.swift in Sources */,
+				A62B52921BF45EC600B971FB /* EventsHomeViewController.swift in Sources */,
 				A6CB4FD61BE6C6810027DF25 /* EventTableViewController.swift in Sources */,
 				A6CB4FDA1BE6CE950027DF25 /* EventDate.swift in Sources */,
 				A6CB4FE11BE896F20027DF25 /* SettingsViewController.swift in Sources */,
@@ -757,7 +761,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.1.2;
+				CURRENT_PROJECT_VERSION = 0.2.1;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Anonyvent/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
@@ -775,7 +779,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.1.2;
+				CURRENT_PROJECT_VERSION = 0.2.1;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Anonyvent/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;

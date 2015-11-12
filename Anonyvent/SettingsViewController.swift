@@ -24,7 +24,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func clearData(sender: UIButton) {
-        sampleData.events.removeAll()
+        //sampleData.events.removeAll()
     }
 
     /*
