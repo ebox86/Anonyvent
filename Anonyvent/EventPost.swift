@@ -63,7 +63,7 @@ class EventPost {
         }
     }
     
-    class func getSpecies(completionHandler: (EventWrapper?, NSError?) -> Void) {
+    class func getEvents(completionHandler: (EventWrapper?, NSError?) -> Void) {
         getEventAtPath(EventPost.endpointForApigee(), completionHandler: completionHandler)
     }
     
@@ -73,12 +73,13 @@ class EventPost {
             return
         }
 
+
     }
+  
     
     
     
-    
-  /*
+ /*
     func pullnParse (){
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
@@ -104,13 +105,14 @@ class EventPost {
                 
         }
     }
-    */
+
 }
-
-
+*/
+}
+    
 extension Alamofire.Request {
-    func responseEventArray(completionHandler: Response -> Void) -> Self {
-        let responseSerializer = ResponseSerializer { request, response, data, error in
+    func responseEventArray(completionHandler: Response<EventPost, NSError> -> Void) -> Self {
+        let responseSerializer = ResponseSerializer<EventWrapper, NSError> { request, response, data, error in
             guard error == nil else {
                 return .Failure(error!)
             }
@@ -131,20 +133,17 @@ extension Alamofire.Request {
                 wrapper.previous = json["previous"].stringValue
                 wrapper.count = json["count"].intValue
                 
-                var allEvents:Array = Array()
-                print(json)
+                var allEvents = [EventPost]()
                 let results = json["results"]
-                print(results)
-                for jsonEvents in results
-                {
+                for jsonEvents in results {
                     print(jsonEvents.1)
                     let events = EventPost(json: jsonEvents.1, id: Int(jsonEvents.0))
                     allEvents.append(events)
                 }
                 wrapper.event = allEvents
-                return Success(wrapper)
+                return .Success(wrapper)
             case .Failure(let error):
-                return Failure(error)
+                return .Failure(error)
             }
         }
         

@@ -15,17 +15,17 @@ class EventTableViewController: UITableViewController {
 
     //MARK : Properties
     let randoIcon = EventIcons()
-    var events = [Event]()
+    var eventsList = [Event]()
     let endpoint = "https://ebox86-test.apigee.net/anonyvent/events"
-
+/*
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //Load Sample Data
         //loadSampleEvents()
         pullnParse()
-        print(events.count)
-        print("last")
+        //print(events.count)
+        //print("last")
         
                 //print(response)
         
@@ -186,4 +186,58 @@ class EventTableViewController: UITableViewController {
             }
         }
     }
+    func loadFirstEvents()
+    {
+        isLoadingEvents = true
+        EventPost.getEvents { wrapper, error in
+            if let error = error
+            {
+                // TODO: improved error handling
+                self.isLoadingEvents = false
+                let alert = UIAlertController(title: "Error", message: "Could not load first event \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            self.addEventsFromWrapper(wrapper)
+            self.isLoadingEvents = false
+            self.tableview?.reloadData()
+        }
+    }
+    
+    func loadMoreEvents()
+    {
+        self.isLoadingEvents = true
+        if self.events != nil && self.eventsWrapper != nil && self.events!.count < self.eventsWrapper!.count
+        {
+            // there are more species out there!
+            EventPost.getMoreEvents(self.eventsWrapper, completionHandler: { wrapper, error in
+                if let error = error
+                {
+                    // TODO: improved error handling
+                    self.isLoadingEvents = false
+                    let alert = UIAlertController(title: "Error", message: "Could not load more events \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                print("got more!")
+                self.addEventsFromWrapper(wrapper)
+                self.isLoadingEvents = false
+                self.tableview?.reloadData()
+            })
+        }
+    }
+    
+    func addEventsFromWrapper(wrapper: EventsWrapper?)
+    {
+        self.eventsWrapper = wrapper
+        if self.events == nil
+        {
+            self.events = self.eventsWrapper?.events
+        }
+        else if self.eventsWrapper != nil && self.eventsWrapper!.events != nil
+        {
+            self.events = self.events! + self.eventsWrapper!.events!
+        }
+    }
+*/
 }
