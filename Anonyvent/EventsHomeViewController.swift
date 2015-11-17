@@ -98,7 +98,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             }
             self.addEventsFromWrapper(wrapper)
             self.isLoadingEvents = false
-            self.tableview?.reloadData()
+            self.EventsTableView?.reloadData()
         }
     }
     
@@ -120,12 +120,12 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
                 print("got more!")
                 self.addEventsFromWrapper(wrapper)
                 self.isLoadingEvents = false
-                self.tableview?.reloadData()
+                self.EventsTableView?.reloadData()
             })
         }
     }
     
-    func addEventsFromWrapper(wrapper: EventsWrapper?)
+    func addEventsFromWrapper(wrapper: EventWrapper?)
     {
         self.eventsWrapper = wrapper
         if self.events == nil
