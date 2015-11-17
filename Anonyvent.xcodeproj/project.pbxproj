@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A62B52921BF45EC600B971FB /* EventsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62B52911BF45EC600B971FB /* EventsHomeViewController.swift */; };
+		5B891B891BFB3245000C2BDE /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B891B881BFB3245000C2BDE /* MainTabBarViewController.swift */; };
+		5B891B8B1BFB3261000C2BDE /* EventsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B891B8A1BFB3261000C2BDE /* EventsHomeViewController.swift */; };
+		5B891B8D1BFB328E000C2BDE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B891B8C1BFB328E000C2BDE /* SettingsViewController.swift */; };
 		A6A22E0B1BEACD4300C9852B /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */; };
 		A6A22E0D1BF0843B00C9852B /* httpConnectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0C1BF0843B00C9852B /* httpConnectionHandler.swift */; };
 		A6A22E0F1BF09B2A00C9852B /* JsonSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */; };
@@ -27,8 +29,6 @@
 		A6CB4FD61BE6C6810027DF25 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FD51BE6C6810027DF25 /* EventTableViewController.swift */; };
 		A6CB4FD81BE6CADD0027DF25 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FD71BE6CADD0027DF25 /* Event.swift */; };
 		A6CB4FDA1BE6CE950027DF25 /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FD91BE6CE950027DF25 /* EventDate.swift */; };
-		A6CB4FE11BE896F20027DF25 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FE01BE896F20027DF25 /* SettingsViewController.swift */; };
-		A6CB4FE31BE8A96A0027DF25 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FE21BE8A96A0027DF25 /* MainTabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,7 +176,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A62B52911BF45EC600B971FB /* EventsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsHomeViewController.swift; path = ../../../../macair/Development/Anonyvent/Anonyvent/EventsHomeViewController.swift; sourceTree = "<group>"; };
+		5B891B881BFB3245000C2BDE /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		5B891B8A1BFB3261000C2BDE /* EventsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsHomeViewController.swift; sourceTree = "<group>"; };
+		5B891B8C1BFB328E000C2BDE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		A6A22E0C1BF0843B00C9852B /* httpConnectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = httpConnectionHandler.swift; sourceTree = "<group>"; };
 		A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonSerializer.swift; sourceTree = "<group>"; };
@@ -201,8 +203,6 @@
 		A6CB4FD51BE6C6810027DF25 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		A6CB4FD71BE6CADD0027DF25 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		A6CB4FD91BE6CE950027DF25 /* EventDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDate.swift; sourceTree = "<group>"; };
-		A6CB4FE01BE896F20027DF25 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../../../../macair/Development/Anonyvent/Anonyvent/SettingsViewController.swift; sourceTree = "<group>"; };
-		A6CB4FE21BE8A96A0027DF25 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarViewController.swift; path = ../../../../macair/Development/Anonyvent/Anonyvent/MainTabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,14 +289,14 @@
 				A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */,
 				A6CB4FDB1BE703A70027DF25 /* TableViewControllers */,
 				A6CB4FA31BE6B6F10027DF25 /* AppDelegate.swift */,
-				A62B52911BF45EC600B971FB /* EventsHomeViewController.swift */,
+				5B891B8A1BFB3261000C2BDE /* EventsHomeViewController.swift */,
 				A6A22ED11BF2C7EC00C9852B /* EventPost.swift */,
 				A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */,
 				A6CB4FA71BE6B6F10027DF25 /* Main.storyboard */,
-				A6CB4FE21BE8A96A0027DF25 /* MainTabBarViewController.swift */,
+				5B891B881BFB3245000C2BDE /* MainTabBarViewController.swift */,
 				A6CB4FD71BE6CADD0027DF25 /* Event.swift */,
-				A6CB4FE01BE896F20027DF25 /* SettingsViewController.swift */,
 				A6CB4FD91BE6CE950027DF25 /* EventDate.swift */,
+				5B891B8C1BFB328E000C2BDE /* SettingsViewController.swift */,
 				A6CB4FD31BE6C02B0027DF25 /* EventTableViewCell.swift */,
 				A6CB4FD11BE6B71F0027DF25 /* EventIcons.swift */,
 				A6CB4FAA1BE6B6F10027DF25 /* Assets.xcassets */,
@@ -597,18 +597,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B891B8B1BFB3261000C2BDE /* EventsHomeViewController.swift in Sources */,
 				A6CB4FD41BE6C02B0027DF25 /* EventTableViewCell.swift in Sources */,
 				A6CB4FD21BE6B71F0027DF25 /* EventIcons.swift in Sources */,
 				A6A22ED21BF2C7EC00C9852B /* EventPost.swift in Sources */,
+				5B891B891BFB3245000C2BDE /* MainTabBarViewController.swift in Sources */,
 				A6A22E0D1BF0843B00C9852B /* httpConnectionHandler.swift in Sources */,
 				A6CB4FA41BE6B6F10027DF25 /* AppDelegate.swift in Sources */,
-				A6CB4FE31BE8A96A0027DF25 /* MainTabBarViewController.swift in Sources */,
 				A6A22E0F1BF09B2A00C9852B /* JsonSerializer.swift in Sources */,
 				A6CB4FD81BE6CADD0027DF25 /* Event.swift in Sources */,
-				A62B52921BF45EC600B971FB /* EventsHomeViewController.swift in Sources */,
 				A6CB4FD61BE6C6810027DF25 /* EventTableViewController.swift in Sources */,
+				5B891B8D1BFB328E000C2BDE /* SettingsViewController.swift in Sources */,
 				A6CB4FDA1BE6CE950027DF25 /* EventDate.swift in Sources */,
-				A6CB4FE11BE896F20027DF25 /* SettingsViewController.swift in Sources */,
 				A6A22E0B1BEACD4300C9852B /* CreateEventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

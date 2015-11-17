@@ -11,11 +11,13 @@ import SwiftyJSON
 import Alamofire
 
 class EventWrapper {
-    var event: Array<EventPost>?
+    var events: Array<EventPost>?
     var count: Int?
     var next: String?
     var previous: String?
 }
+
+
 
 enum EventPostFields: String {
     case Name = "name"
@@ -59,7 +61,7 @@ class EventPost {
                     completionHandler(nil, error)
                     return
                 }
-                completionHandler(response.result.value, nil)
+                completionHandler(result., nil)
         }
     }
     
@@ -75,7 +77,7 @@ class EventPost {
 
 
     }
-  
+}
     
     
     
@@ -108,7 +110,7 @@ class EventPost {
 
 }
 */
-}
+
     
 extension Alamofire.Request {
     func responseEventArray(completionHandler: Response<EventPost, NSError> -> Void) -> Self {
@@ -140,7 +142,7 @@ extension Alamofire.Request {
                     let events = EventPost(json: jsonEvents.1, id: Int(jsonEvents.0))
                     allEvents.append(events)
                 }
-                wrapper.event = allEvents
+                wrapper.events = allEvents
                 return .Success(wrapper)
             case .Failure(let error):
                 return .Failure(error)
