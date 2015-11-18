@@ -21,7 +21,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
     
     var event: Event?
     var newEvent = [String: String]()
-    var randoIcon = EventIcons()
+    //var randoIcon = EventIcons.randomIcon
     //var newSession = httpConnectionHandler
     
     override func viewDidLoad() {

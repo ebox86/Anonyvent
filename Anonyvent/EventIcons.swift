@@ -11,8 +11,8 @@ import UIKit
 
 
 
-struct EventIcons{
-    
+struct EventIcons {
+    /*
     var iconArray: [UIImage] = [
         
         UIImage(named: "1_03.gif")!,
@@ -48,4 +48,5 @@ struct EventIcons{
         
         return iconArray[randomNumber]
         }
+*/
 }

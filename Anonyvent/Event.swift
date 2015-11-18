@@ -22,7 +22,7 @@ class Event {
         self.title = title
         self.date = date
         self.description = description
-        self.icon = icon
+        self.icon = icon!
         self.id = id
         
         if title.isEmpty {
