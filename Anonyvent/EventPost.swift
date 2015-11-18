@@ -10,14 +10,6 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
-class EventWrapper {
-    var events: Array<EventPost>?
-    var count: Int?
-    var next: String?
-    var previous: String?
-}
-
-
 
 enum EventPostFields: String {
     case Name = "name"
@@ -26,6 +18,13 @@ enum EventPostFields: String {
     case Description = "description"
     case EventStatus = "eventStatus"
     case EventTitle = "eventTitle"
+}
+
+class EventWrapper {
+    var event: Array<EventPost>?
+    var count: Int?
+    private var next: String?
+    private var previous: String?
 }
 
 
@@ -39,6 +38,7 @@ class EventPost {
     var eventTitle: String?
     
     required init(json: JSON, id: Int?) {
+        print(json)
         self.idNumber = id
         self.name = json[EventPostFields.Name.rawValue].stringValue
      //   self.startDate = json[EventPostFields.StartDate.rawValue].
@@ -61,7 +61,7 @@ class EventPost {
                     completionHandler(nil, error)
                     return
                 }
-                completionHandler(result., nil)
+                completionHandler(response.result.value, nil)
         }
     }
     
@@ -113,7 +113,7 @@ class EventPost {
 
     
 extension Alamofire.Request {
-    func responseEventArray(completionHandler: Response<EventPost, NSError> -> Void) -> Self {
+    func responseEventArray(completionHandler: Response<EventWrapper, NSError> -> Void) -> Self {
         let responseSerializer = ResponseSerializer<EventWrapper, NSError> { request, response, data, error in
             guard error == nil else {
                 return .Failure(error!)
@@ -142,7 +142,7 @@ extension Alamofire.Request {
                     let events = EventPost(json: jsonEvents.1, id: Int(jsonEvents.0))
                     allEvents.append(events)
                 }
-                wrapper.events = allEvents
+                wrapper.event = allEvents
                 return .Success(wrapper)
             case .Failure(let error):
                 return .Failure(error)
