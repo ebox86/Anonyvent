@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Yo0-gJ-Qji">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Yo0-gJ-Qji">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -23,7 +23,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Kju-IX-jZY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
@@ -43,15 +42,13 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mtq-nu-gYV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="4eM-9a-6kv">
                         <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </toolbar>
                     <connections>
-                        <segue destination="cFh-dy-bvX" kind="relationship" relationship="rootViewController" id="im7-pI-32R"/>
+                        <segue destination="zN2-SC-oqn" kind="relationship" relationship="rootViewController" id="kzf-4R-gfe"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8U-xS-NLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -69,7 +66,6 @@
                     <view key="view" contentMode="scaleToFill" id="aeS-fT-7YI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gear_44" id="sCI-vQ-Wll"/>
@@ -85,11 +81,10 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="lp4-Ey-C0N">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventTableViewCell" rowHeight="70" id="Ma5-Rs-Cq0" customClass="EventTableViewCell" customModule="Anonyvent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="70"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ma5-Rs-Cq0" id="cWe-G4-99l">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
@@ -97,7 +92,6 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTZ-EP-WiG">
                                             <rect key="frame" x="78" y="4" width="216" height="21"/>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="9zL-tg-XnO"/>
                                                 <constraint firstAttribute="width" constant="216" id="YYi-6c-2XT"/>
@@ -108,24 +102,20 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJa-ho-IJN">
                                             <rect key="frame" x="78" y="23" width="216" height="21"/>
-                                            <animations/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                             <color key="textColor" red="0.44639643324607325" green="0.44639643324607325" blue="0.44639643324607325" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQ4-4e-AMf">
                                             <rect key="frame" x="78" y="47" width="62" height="14"/>
-                                            <animations/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p6M-G6-cUM">
                                             <rect key="frame" x="8" y="9" width="50" height="50"/>
-                                            <animations/>
                                         </imageView>
                                     </subviews>
-                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="TQ4-4e-AMf" firstAttribute="leading" secondItem="p6M-G6-cUM" secondAttribute="trailing" constant="20" id="4Xf-6Y-hSE"/>
                                         <constraint firstItem="sTZ-EP-WiG" firstAttribute="leading" secondItem="fJa-ho-IJN" secondAttribute="leading" id="C2R-xy-Lqw"/>
@@ -143,13 +133,11 @@
                                         <constraint firstItem="sTZ-EP-WiG" firstAttribute="trailing" secondItem="fJa-ho-IJN" secondAttribute="trailing" id="zVd-Vc-dkO"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <animations/>
                                 <connections>
                                     <outlet property="dateLabel" destination="fJa-ho-IJN" id="6LV-yH-Y1e"/>
                                     <outlet property="descriptionLabel" destination="TQ4-4e-AMf" id="1x7-pm-Np4"/>
                                     <outlet property="evebtIconView" destination="p6M-G6-cUM" id="NOh-8j-WGD"/>
                                     <outlet property="titleLabel" destination="sTZ-EP-WiG" id="hhf-Ja-J6d"/>
-                                    <segue destination="mYb-UV-Nyl" kind="show" identifier="ShowDetail" id="2m8-gx-bkW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -159,16 +147,46 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Anonyvent" id="jWS-8q-Lm1">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="tMS-Qu-7Md">
-                            <connections>
-                                <segue destination="WJs-o4-2Hk" kind="presentation" identifier="AddItem" id="O0U-CN-T0G"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="tMS-Qu-7Md"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="shb-Tf-CV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28" y="-161"/>
+            <point key="canvasLocation" x="84" y="-907"/>
+        </scene>
+        <!--SomeApp-->
+        <scene sceneID="PoG-aN-1mt">
+            <objects>
+                <viewController id="zN2-SC-oqn" customClass="EventsHomeViewController" customModule="Anonyvent" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kIh-cV-e5w"/>
+                        <viewControllerLayoutGuide type="bottom" id="OXO-Bl-vhz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="usl-Zh-1W7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BpR-XR-tMC">
+                                <rect key="frame" x="0.0" y="81" width="600" height="418"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="SomeApp" id="u5w-aW-I2h">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="fve-fF-OJQ">
+                            <connections>
+                                <segue destination="WJs-o4-2Hk" kind="presentation" id="cbx-sR-3mY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="EventsTableViewNew" destination="BpR-XR-tMC" id="fhZ-Q8-8sb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gpu-eu-b9f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="72" y="-167"/>
         </scene>
         <!--New Event-->
         <scene sceneID="Rcy-U0-TMq">
@@ -184,13 +202,11 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m4e-OJ-rjq">
                                 <rect key="frame" x="20" y="111" width="560" height="30"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ncq-vp-JlA">
                                 <rect key="frame" x="20" y="165" width="560" height="30"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="0k0-Cr-BbD"/>
                                 </constraints>
@@ -199,7 +215,6 @@
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="nZc-mD-cRU">
                                 <rect key="frame" x="20" y="229" width="560" height="162"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="162" id="Sm1-FC-iKM"/>
                                 </constraints>
@@ -214,7 +229,6 @@
                                 </date>
                             </datePicker>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -264,7 +278,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="y0x-8Z-CjK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -280,7 +293,4 @@
         <image name="eventsTab_44" width="44" height="44"/>
         <image name="gear_44" width="44" height="44"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="2m8-gx-bkW"/>
-    </inferredMetricsTieBreakers>
 </document>

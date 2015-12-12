@@ -17,17 +17,20 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     var eventsWrapper:EventWrapper? // holds the last wrapper that we've loaded
     var isLoadingEvents = false
     
-    @IBOutlet weak var EventsTableView: UITableView!
+    
+    @IBOutlet weak var EventsTableViewNew: UITableView!
 
     
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                print("test")
         // place tableview below status bar, cuz I think it's prettier that way
-        self.EventsTableView?.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
-        
-        //self.loadFirstEvent()
+        self.EventsTableViewNew?.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
+
+        self.loadFirstEvents()
+        print("loadEvents")
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,18 +53,18 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         
         if self.events != nil && self.events!.count >= indexPath.row
         {
-            let species = self.events![indexPath.row]
-            cell.textLabel?.text = species.name
-            cell.detailTextLabel?.text = events?.description
+            let events = self.events![indexPath.row]
+            cell.textLabel?.text = events.name
+            cell.detailTextLabel?.text = events.description
             
-            // See if we need to load more species
+            // See if we need to load more events
             let rowsToLoadFromBottom = 5;
             let rowsLoaded = self.events!.count
             if (!self.isLoadingEvents && (indexPath.row >= (rowsLoaded - rowsToLoadFromBottom)))
             {
                 let totalRows = self.eventsWrapper!.count!
-                let remainingSpeciesToLoad = totalRows - rowsLoaded;
-                if (remainingSpeciesToLoad > 0)
+                let remainingEventsToLoad = totalRows - rowsLoaded;
+                if (remainingEventsToLoad > 0)
                 {
                     self.loadMoreEvents()
                 }
@@ -86,6 +89,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     */
     func loadFirstEvents()
     {
+        print("loadFirstEvent")
         isLoadingEvents = true
         EventPost.getEvents { wrapper, error in
             if let error = error
@@ -98,7 +102,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             }
             self.addEventsFromWrapper(wrapper)
             self.isLoadingEvents = false
-            self.EventsTableView?.reloadData()
+            self.EventsTableViewNew?.reloadData()
         }
     }
     
@@ -107,7 +111,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         self.isLoadingEvents = true
         if self.events != nil && self.eventsWrapper != nil && self.events!.count < self.eventsWrapper!.count
         {
-            // there are more species out there!
+            // there are more events out there!
             EventPost.getMoreEvents(self.eventsWrapper, completionHandler: { wrapper, error in
                 if let error = error
                 {
@@ -120,7 +124,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
                 print("got more!")
                 self.addEventsFromWrapper(wrapper)
                 self.isLoadingEvents = false
-                self.EventsTableView?.reloadData()
+                self.EventsTableViewNew?.reloadData()
             })
         }
     }

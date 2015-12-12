@@ -764,7 +764,7 @@
 				CURRENT_PROJECT_VERSION = 0.2.1;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Anonyvent/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.evankohout.Anonyvent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -782,7 +782,7 @@
 				CURRENT_PROJECT_VERSION = 0.2.1;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Anonyvent/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.evankohout.Anonyvent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
