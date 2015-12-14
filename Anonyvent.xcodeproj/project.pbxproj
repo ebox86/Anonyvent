@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B891B891BFB3245000C2BDE /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B891B881BFB3245000C2BDE /* MainTabBarViewController.swift */; };
 		5B891B8B1BFB3261000C2BDE /* EventsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B891B8A1BFB3261000C2BDE /* EventsHomeViewController.swift */; };
-		5B891B8D1BFB328E000C2BDE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B891B8C1BFB328E000C2BDE /* SettingsViewController.swift */; };
+		5B891B8D1BFB328E000C2BDE /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B891B8C1BFB328E000C2BDE /* MyEventsViewController.swift */; };
 		A6A22E0B1BEACD4300C9852B /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */; };
 		A6A22E0D1BF0843B00C9852B /* httpConnectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0C1BF0843B00C9852B /* httpConnectionHandler.swift */; };
 		A6A22E0F1BF09B2A00C9852B /* JsonSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */; };
@@ -178,7 +178,7 @@
 /* Begin PBXFileReference section */
 		5B891B881BFB3245000C2BDE /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		5B891B8A1BFB3261000C2BDE /* EventsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsHomeViewController.swift; sourceTree = "<group>"; };
-		5B891B8C1BFB328E000C2BDE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		5B891B8C1BFB328E000C2BDE /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		A6A22E0C1BF0843B00C9852B /* httpConnectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = httpConnectionHandler.swift; sourceTree = "<group>"; };
 		A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonSerializer.swift; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 				A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */,
 				A6CB4FA71BE6B6F10027DF25 /* Main.storyboard */,
 				5B891B881BFB3245000C2BDE /* MainTabBarViewController.swift */,
-				5B891B8C1BFB328E000C2BDE /* SettingsViewController.swift */,
+				5B891B8C1BFB328E000C2BDE /* MyEventsViewController.swift */,
 				A6CB4FAA1BE6B6F10027DF25 /* Assets.xcassets */,
 				A6CB4FAC1BE6B6F10027DF25 /* LaunchScreen.storyboard */,
 				A6CB4FAF1BE6B6F10027DF25 /* Info.plist */,
@@ -607,7 +607,7 @@
 				A6A22E0F1BF09B2A00C9852B /* JsonSerializer.swift in Sources */,
 				A6CB4FD81BE6CADD0027DF25 /* Event.swift in Sources */,
 				A6CB4FD61BE6C6810027DF25 /* EventTableViewController.swift in Sources */,
-				5B891B8D1BFB328E000C2BDE /* SettingsViewController.swift in Sources */,
+				5B891B8D1BFB328E000C2BDE /* MyEventsViewController.swift in Sources */,
 				A6CB4FDA1BE6CE950027DF25 /* EventDate.swift in Sources */,
 				A6A22E0B1BEACD4300C9852B /* CreateEventViewController.swift in Sources */,
 			);

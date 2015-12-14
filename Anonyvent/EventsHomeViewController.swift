@@ -100,7 +100,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         if self.events != nil && self.events!.count >= indexPath.row
         {
             let events = self.events![indexPath.row]
-            cell.textLabel?.text = events.name
+            cell.textLabel?.text = events.title
             cell.detailTextLabel?.text = events.description
             // See if we need to load more events
             let rowsToLoadFromBottom = 5;

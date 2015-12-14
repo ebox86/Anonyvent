@@ -17,6 +17,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
     @IBOutlet weak var eventDescription: UITextField!
     @IBOutlet weak var eventDateSelector: UIDatePicker!
     @IBOutlet weak var postButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     
     var event: Event?
