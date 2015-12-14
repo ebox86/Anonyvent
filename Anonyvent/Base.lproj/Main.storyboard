@@ -9,9 +9,6 @@
         <mutableArray key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
             <string>HelveticaNeue</string>
-            <string>HelveticaNeue</string>
-            <string>HelveticaNeue</string>
-            <string>HelveticaNeue</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -39,7 +36,7 @@
             <objects>
                 <navigationController id="LZQ-EV-2aI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="eventsTab_44" id="O6K-5E-Ch4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mtq-nu-gYV">
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" id="Mtq-nu-gYV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -74,86 +71,6 @@
             </objects>
             <point key="canvasLocation" x="-1570" y="688"/>
         </scene>
-        <!--Anonyvent-->
-        <scene sceneID="yBL-Eo-oj0">
-            <objects>
-                <tableViewController id="cFh-dy-bvX" customClass="EventTableViewController" customModule="Anonyvent" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="lp4-Ey-C0N">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventTableViewCell" rowHeight="70" id="Ma5-Rs-Cq0" customClass="EventTableViewCell" customModule="Anonyvent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="70"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ma5-Rs-Cq0" id="cWe-G4-99l">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTZ-EP-WiG">
-                                            <rect key="frame" x="78" y="4" width="216" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="9zL-tg-XnO"/>
-                                                <constraint firstAttribute="width" constant="216" id="YYi-6c-2XT"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJa-ho-IJN">
-                                            <rect key="frame" x="78" y="23" width="216" height="21"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                            <color key="textColor" red="0.44639643324607325" green="0.44639643324607325" blue="0.44639643324607325" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQ4-4e-AMf">
-                                            <rect key="frame" x="78" y="47" width="62" height="14"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p6M-G6-cUM">
-                                            <rect key="frame" x="8" y="9" width="50" height="50"/>
-                                        </imageView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="TQ4-4e-AMf" firstAttribute="leading" secondItem="p6M-G6-cUM" secondAttribute="trailing" constant="20" id="4Xf-6Y-hSE"/>
-                                        <constraint firstItem="sTZ-EP-WiG" firstAttribute="leading" secondItem="fJa-ho-IJN" secondAttribute="leading" id="C2R-xy-Lqw"/>
-                                        <constraint firstItem="TQ4-4e-AMf" firstAttribute="top" secondItem="fJa-ho-IJN" secondAttribute="bottom" constant="3" id="Dtj-GD-E3m"/>
-                                        <constraint firstItem="sTZ-EP-WiG" firstAttribute="leading" secondItem="TQ4-4e-AMf" secondAttribute="leading" id="J1b-n2-4CU"/>
-                                        <constraint firstItem="p6M-G6-cUM" firstAttribute="top" secondItem="cWe-G4-99l" secondAttribute="topMargin" constant="1" id="Sfk-hR-vXp"/>
-                                        <constraint firstItem="fJa-ho-IJN" firstAttribute="leading" secondItem="p6M-G6-cUM" secondAttribute="trailing" constant="20" id="Tni-6Q-BrG"/>
-                                        <constraint firstItem="fJa-ho-IJN" firstAttribute="top" secondItem="cWe-G4-99l" secondAttribute="topMargin" constant="15" id="UCb-3H-2lX"/>
-                                        <constraint firstItem="sTZ-EP-WiG" firstAttribute="top" secondItem="cWe-G4-99l" secondAttribute="topMargin" constant="-4" id="VhO-l7-vYG"/>
-                                        <constraint firstItem="fJa-ho-IJN" firstAttribute="centerY" secondItem="p6M-G6-cUM" secondAttribute="centerY" id="VqN-RB-ILh"/>
-                                        <constraint firstItem="p6M-G6-cUM" firstAttribute="leading" secondItem="cWe-G4-99l" secondAttribute="leadingMargin" id="ZD1-BY-PiC"/>
-                                        <constraint firstItem="TQ4-4e-AMf" firstAttribute="top" secondItem="sTZ-EP-WiG" secondAttribute="bottom" constant="22" id="b21-Mr-aZm"/>
-                                        <constraint firstItem="sTZ-EP-WiG" firstAttribute="leading" secondItem="cWe-G4-99l" secondAttribute="leading" constant="78" id="fOP-Ke-ojs"/>
-                                        <constraint firstItem="sTZ-EP-WiG" firstAttribute="leading" secondItem="p6M-G6-cUM" secondAttribute="trailing" constant="20" id="g9z-C3-Z3T"/>
-                                        <constraint firstItem="sTZ-EP-WiG" firstAttribute="trailing" secondItem="fJa-ho-IJN" secondAttribute="trailing" id="zVd-Vc-dkO"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="dateLabel" destination="fJa-ho-IJN" id="6LV-yH-Y1e"/>
-                                    <outlet property="descriptionLabel" destination="TQ4-4e-AMf" id="1x7-pm-Np4"/>
-                                    <outlet property="evebtIconView" destination="p6M-G6-cUM" id="NOh-8j-WGD"/>
-                                    <outlet property="titleLabel" destination="sTZ-EP-WiG" id="hhf-Ja-J6d"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="cFh-dy-bvX" id="wdE-F5-ag3"/>
-                            <outlet property="delegate" destination="cFh-dy-bvX" id="qtE-8T-VuW"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Anonyvent" id="jWS-8q-Lm1">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="tMS-Qu-7Md"/>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="shb-Tf-CV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="84" y="-907"/>
-        </scene>
         <!--SomeApp-->
         <scene sceneID="PoG-aN-1mt">
             <objects>
@@ -166,12 +83,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BpR-XR-tMC">
-                                <rect key="frame" x="0.0" y="81" width="600" height="418"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BpR-XR-tMC">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.8389423077" green="0.8389423077" blue="0.8389423077" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Wwb-Z5-BLa" detailTextLabel="c1h-I0-gEf" rowHeight="30" style="IBUITableViewCellStyleSubtitle" id="s3c-q4-6Hx">
+                                        <rect key="frame" x="0.0" y="86" width="600" height="30"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s3c-q4-6Hx" id="WJE-Nx-0tM">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="29"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wwb-Z5-BLa">
+                                                    <rect key="frame" x="15" y="-1" width="29" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c1h-I0-gEf">
+                                                    <rect key="frame" x="15" y="18" width="26" height="13"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="11"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="zN2-SC-oqn" id="8bQ-8Z-6VG"/>
+                                    <outlet property="delegate" destination="zN2-SC-oqn" id="LQp-hI-TM5"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="BpR-XR-tMC" secondAttribute="bottom" constant="49" id="NRq-fl-7gF"/>
+                            <constraint firstItem="BpR-XR-tMC" firstAttribute="top" secondItem="usl-Zh-1W7" secondAttribute="top" id="Wxs-qu-0Wj"/>
+                            <constraint firstItem="BpR-XR-tMC" firstAttribute="leading" secondItem="usl-Zh-1W7" secondAttribute="leading" id="uRN-Bg-uH9"/>
+                            <constraint firstAttribute="trailing" secondItem="BpR-XR-tMC" secondAttribute="trailing" id="wNd-qr-aTj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SomeApp" id="u5w-aW-I2h">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="fve-fF-OJQ">
@@ -181,7 +134,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="EventsTableViewNew" destination="BpR-XR-tMC" id="fhZ-Q8-8sb"/>
+                        <outlet property="eventsTableViewNew2" destination="BpR-XR-tMC" id="DfO-3U-9nI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gpu-eu-b9f" userLabel="First Responder" sceneMemberID="firstResponder"/>

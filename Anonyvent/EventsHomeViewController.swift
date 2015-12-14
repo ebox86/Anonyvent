@@ -12,84 +12,20 @@ import SwiftyJSON
 import Foundation
 
 class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
     var events:Array<EventPost>?
     var eventsWrapper:EventWrapper? // holds the last wrapper that we've loaded
     var isLoadingEvents = false
     
-    
-    @IBOutlet weak var EventsTableViewNew: UITableView!
-
+    @IBOutlet weak var eventsTableViewNew2: UITableView?
     
     // MARK: Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-                print("test")
-        // place tableview below status bar, cuz I think it's prettier that way
-        self.EventsTableViewNew?.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
-
         self.loadFirstEvents()
-        print("loadEvents")
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.events == nil
-        {
-            return 0
-        }
-        return self.events!.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        
-        if self.events != nil && self.events!.count >= indexPath.row
-        {
-            let events = self.events![indexPath.row]
-            cell.textLabel?.text = events.name
-            cell.detailTextLabel?.text = events.description
-            
-            // See if we need to load more events
-            let rowsToLoadFromBottom = 5;
-            let rowsLoaded = self.events!.count
-            if (!self.isLoadingEvents && (indexPath.row >= (rowsLoaded - rowsToLoadFromBottom)))
-            {
-                let totalRows = self.eventsWrapper!.count!
-                let remainingEventsToLoad = totalRows - rowsLoaded;
-                if (remainingEventsToLoad > 0)
-                {
-                    self.loadMoreEvents()
-                }
-            }
-        }
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     func loadFirstEvents()
     {
-        print("loadFirstEvent")
         isLoadingEvents = true
         EventPost.getEvents { wrapper, error in
             if let error = error
@@ -102,10 +38,10 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             }
             self.addEventsFromWrapper(wrapper)
             self.isLoadingEvents = false
-            self.EventsTableViewNew?.reloadData()
+            self.eventsTableViewNew2?.reloadData()
         }
     }
-    
+   /*
     func loadMoreEvents()
     {
         self.isLoadingEvents = true
@@ -124,11 +60,13 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
                 print("got more!")
                 self.addEventsFromWrapper(wrapper)
                 self.isLoadingEvents = false
-                self.EventsTableViewNew?.reloadData()
+                self.EventsTableViewNew2?.reloadData()
             })
         }
     }
+*/
     
+
     func addEventsFromWrapper(wrapper: EventWrapper?)
     {
         self.eventsWrapper = wrapper
@@ -141,4 +79,63 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             self.events = self.events! + self.eventsWrapper!.event!
         }
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.events == nil
+        {
+            return 0
+        }
+        return self.events!.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        if self.events != nil && self.events!.count >= indexPath.row
+        {
+            let events = self.events![indexPath.row]
+            cell.textLabel?.text = events.name
+            cell.detailTextLabel?.text = events.description
+            // See if we need to load more events
+            let rowsToLoadFromBottom = 5;
+            let rowsLoaded = self.events!.count
+            /*
+            if (!self.isLoadingEvents && (indexPath.row >= (rowsLoaded - rowsToLoadFromBottom)))
+            {
+                let totalRows = (self.eventsWrapper?.count)!
+                let remainingEventsToLoad = totalRows - rowsLoaded;
+                if (remainingEventsToLoad > 0)
+                {
+                    //self.loadMoreEvents()
+                }
+            }
+            */
+        }
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row % 2 == 0
+        {
+            cell.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0) // very light gray
+        }
+        else
+        {
+            cell.backgroundColor = UIColor.whiteColor()
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+
+    
+    
 }

@@ -23,8 +23,6 @@ enum EventPostFields: String {
 class EventWrapper {
     var event: Array<EventPost>?
     var count: Int?
-    private var next: String?
-    private var previous: String?
 }
 
 
@@ -42,10 +40,10 @@ class EventPost {
         self.idNumber = id
         self.name = json[EventPostFields.Name.rawValue].stringValue
      //   self.startDate = json[EventPostFields.StartDate.rawValue].
-        self.location = json[EventPostFields.Location.rawValue].stringValue
+     //   self.location = json[EventPostFields.Location.rawValue].stringValue
         self.description = json[EventPostFields.Description.rawValue].stringValue
-        self.eventStatus = json[EventPostFields.EventStatus.rawValue].stringValue
-        self.eventTitle = json[EventPostFields.EventTitle.rawValue].stringValue
+     //   self.eventStatus = json[EventPostFields.EventStatus.rawValue].stringValue
+     //   self.eventTitle = json[EventPostFields.EventTitle.rawValue].stringValue
     
     }
     
@@ -68,7 +66,7 @@ class EventPost {
     class func getEvents(completionHandler: (EventWrapper?, NSError?) -> Void) {
         getEventAtPath(EventPost.endpointForApigee(), completionHandler: completionHandler)
     }
-    
+    /*
     class func getMoreEvents(wrapper: EventWrapper?, completionHandler: (EventWrapper?, NSError?) -> Void) {
         guard var nextURLString = wrapper?.next else {
             completionHandler(nil, nil)
@@ -77,40 +75,8 @@ class EventPost {
 
 
     }
-}
-    
-    
-    
- /*
-    func pullnParse (){
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        Alamofire.request(.GET, endpoint)
-            .responseJSON { response in
-                switch response.result {
-                case .Success(let JSON):
-                    //print("Success wth JSON: \(JSON)")
-                    var newArray = (JSON as! NSArray) as Array
-                    var x = 0
-                    for (x; x < newArray.count; x++) {
-                        //print(x)
-                        let dateX : NSDate = dateFormatter.dateFromString(String(newArray[x]["startDate"]!!))!
-                        print(dateX)
-                        let eventX = Event(title: String(newArray[x]["name"]), date: dateX, description: String(newArray[x]["description"]), icon: self.randoIcon.randomIcon(), id: String(newArray[x]["id"]))
-                        self.events.append(eventX!)
-                        print(self.events.count)
-                    }
-                    
-                case .Failure(let error):
-                    print("request failed with error: \(error)")
-                }
-                
-        }
-    }
-
-}
 */
-
+}
     
 extension Alamofire.Request {
     func responseEventArray(completionHandler: Response<EventWrapper, NSError> -> Void) -> Self {
@@ -131,16 +97,17 @@ extension Alamofire.Request {
             case .Success(let value):
                 let json = SwiftyJSON.JSON(value)
                 let wrapper = EventWrapper()
-                wrapper.next = json["next"].stringValue
-                wrapper.previous = json["previous"].stringValue
-                wrapper.count = json["count"].intValue
+                //wrapper.next = json["next"].stringValue
+                //wrapper.previous = json["previous"].stringValue
+                //wrapper.count = json["count"].intValue
                 
-                var allEvents = [EventPost]()
-                let results = json["results"]
-                for jsonEvents in results {
-                    print(jsonEvents.1)
-                    let events = EventPost(json: jsonEvents.1, id: Int(jsonEvents.0))
-                    allEvents.append(events)
+                
+                var allEvents:Array = Array<EventPost>()
+                for jsonEvents in json {
+                    //print(jsonEvents.0)
+                    //print(jsonEvents.1)
+                    let newEvents = EventPost(json: jsonEvents.1, id: Int(jsonEvents.0))
+                    allEvents.append(newEvents)
                 }
                 wrapper.event = allEvents
                 return .Success(wrapper)

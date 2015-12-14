@@ -285,20 +285,14 @@
 		A6CB4FA21BE6B6F10027DF25 /* Anonyvent */ = {
 			isa = PBXGroup;
 			children = (
-				A6A22E0C1BF0843B00C9852B /* httpConnectionHandler.swift */,
-				A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */,
-				A6CB4FDB1BE703A70027DF25 /* TableViewControllers */,
+				A6CB4FDB1BE703A70027DF25 /* Legacy */,
 				A6CB4FA31BE6B6F10027DF25 /* AppDelegate.swift */,
 				5B891B8A1BFB3261000C2BDE /* EventsHomeViewController.swift */,
 				A6A22ED11BF2C7EC00C9852B /* EventPost.swift */,
 				A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */,
 				A6CB4FA71BE6B6F10027DF25 /* Main.storyboard */,
 				5B891B881BFB3245000C2BDE /* MainTabBarViewController.swift */,
-				A6CB4FD71BE6CADD0027DF25 /* Event.swift */,
-				A6CB4FD91BE6CE950027DF25 /* EventDate.swift */,
 				5B891B8C1BFB328E000C2BDE /* SettingsViewController.swift */,
-				A6CB4FD31BE6C02B0027DF25 /* EventTableViewCell.swift */,
-				A6CB4FD11BE6B71F0027DF25 /* EventIcons.swift */,
 				A6CB4FAA1BE6B6F10027DF25 /* Assets.xcassets */,
 				A6CB4FAC1BE6B6F10027DF25 /* LaunchScreen.storyboard */,
 				A6CB4FAF1BE6B6F10027DF25 /* Info.plist */,
@@ -325,12 +319,18 @@
 			path = AnonyventUITests;
 			sourceTree = "<group>";
 		};
-		A6CB4FDB1BE703A70027DF25 /* TableViewControllers */ = {
+		A6CB4FDB1BE703A70027DF25 /* Legacy */ = {
 			isa = PBXGroup;
 			children = (
+				A6A22E0C1BF0843B00C9852B /* httpConnectionHandler.swift */,
+				A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */,
+				A6CB4FD71BE6CADD0027DF25 /* Event.swift */,
+				A6CB4FD91BE6CE950027DF25 /* EventDate.swift */,
+				A6CB4FD11BE6B71F0027DF25 /* EventIcons.swift */,
+				A6CB4FD31BE6C02B0027DF25 /* EventTableViewCell.swift */,
 				A6CB4FD51BE6C6810027DF25 /* EventTableViewController.swift */,
 			);
-			name = TableViewControllers;
+			name = Legacy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

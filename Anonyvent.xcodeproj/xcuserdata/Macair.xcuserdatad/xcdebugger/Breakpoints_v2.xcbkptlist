@@ -47,8 +47,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
             endingLineNumber = "18"
-            landmarkName = "iconArray"
-            landmarkType = "19">
+            landmarkName = "EventIcons"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -184,11 +184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Anonyvent/EventPost.swift"
-            timestampString = "468901260.715613"
+            timestampString = "471692897.216627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "EventPost"
             landmarkType = "3">
          </BreakpointContent>
@@ -200,29 +200,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../macair/Development/Anonyvent/Anonyvent/EventsHomeViewController.swift"
-            timestampString = "471601975.774661"
+            timestampString = "471765616.928353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "addEventsFromWrapper(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../macair/Development/Anonyvent/Anonyvent/EventsHomeViewController.swift"
-            timestampString = "471601975.774661"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "loadMoreEvents()"
-            landmarkType = "5">
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "EventsHomeViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
