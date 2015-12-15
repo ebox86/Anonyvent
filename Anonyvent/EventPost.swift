@@ -78,15 +78,15 @@ class EventPost {
     class func getEvents(completionHandler: (EventWrapper?, NSError?) -> Void) {
         getEventAtPath(EventPost.endpointForApigee(), completionHandler: completionHandler)
     }
-    
+    /*
     class func getMoreEvents(wrapper: EventWrapper?, completionHandler: (EventWrapper?, NSError?) -> Void) {
-        guard var nextURLString = wrapper?.event else {
+        guard var nextURLString = wrapper?.count else {
             completionHandler(nil, nil)
             return
         }
 
 
-    }
+    }*/
 
 }
     

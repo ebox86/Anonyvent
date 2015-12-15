@@ -12,6 +12,9 @@ import SwiftyJSON
 import Foundation
 
 class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    var refreshControl = UIRefreshControl()
+    let formatter = NSDateFormatter()
+    
     var events:Array<EventPost>?
     var eventsWrapper:EventWrapper? // holds the last wrapper that we've loaded
     var isLoadingEvents = false
@@ -27,6 +30,21 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // date format for pull refresher
+        self.formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        self.formatter.timeStyle = NSDateFormatterStyle.LongStyle
+        
+        // set up the refresh control
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.eventsTableViewNew2?.addSubview(refreshControl)
+        
+        self.loadFirstEvents()
+    }
+    
+    func refresh(sender:AnyObject) {
+        events?.removeAll()
         self.loadFirstEvents()
     }
     
@@ -38,12 +56,24 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             {
                 // TODO: improved error handling
                 self.isLoadingEvents = false
-                let alert = UIAlertController(title: "Error", message: "Could not load first event \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                let alert = UIAlertController(title: "Uh Oh", message: "Could not load any events. \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             }
             self.addEventsFromWrapper(wrapper)
             self.isLoadingEvents = false
+            
+            // update "last updated" title for refresh control
+            let now = NSDate()
+            let updateString = "Last Updated at " + self.formatter.stringFromDate(now)
+            self.refreshControl.attributedTitle = NSAttributedString(string: updateString)
+            
+            // tell refresh control it can stop showing up now
+            if self.refreshControl.refreshing
+            {
+                self.refreshControl.endRefreshing()
+            }
+            
             self.eventsTableViewNew2?.reloadData()
         }
     }
@@ -53,21 +83,34 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         self.isLoadingEvents = true
         if self.events != nil && self.eventsWrapper != nil && self.events!.count < self.eventsWrapper!.count
         {
+            print("test")
             // there are more events out there!
-            EventPost.getMoreEvents(self.eventsWrapper, completionHandler: { wrapper, error in
+            EventPost.getEvents { wrapper, error in
                 if let error = error
                 {
                     // TODO: improved error handling
                     self.isLoadingEvents = false
-                    let alert = UIAlertController(title: "Error", message: "Could not load more events \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                    let alert = UIAlertController(title: "Uh Oh", message: "Could not load more events. \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
                 print("got more!")
                 self.addEventsFromWrapper(wrapper)
                 self.isLoadingEvents = false
+                
+                // update "last updated" title for refresh control
+                let now = NSDate()
+                let updateString = "Last Updated at " + self.formatter.stringFromDate(now)
+                self.refreshControl.attributedTitle = NSAttributedString(string: updateString)
+                
+                // tell refresh control it can stop showing up now
+                if self.refreshControl.refreshing
+                {
+                    self.refreshControl.endRefreshing()
+                }
+                
                 self.eventsTableViewNew2?.reloadData()
-            })
+            }
         }
     }
 
