@@ -20,6 +20,16 @@ enum EventPostFields: String {
     case EventTitle = "eventTitle"
 }
 
+enum EventStatus: String {
+    case Active = "active"
+    case Inactive = "inactive"
+    case Expired = "expired"
+    case Canceled = "canceled"
+    case Postponed = "postponed"
+    case Rescheduled = "rescheduled"
+    case Scheduled = "scheduled"
+}
+
 class EventWrapper {
     var event: Array<EventPost>?
     var count: Int?
@@ -66,16 +76,16 @@ class EventPost {
     class func getEvents(completionHandler: (EventWrapper?, NSError?) -> Void) {
         getEventAtPath(EventPost.endpointForApigee(), completionHandler: completionHandler)
     }
-    /*
+    
     class func getMoreEvents(wrapper: EventWrapper?, completionHandler: (EventWrapper?, NSError?) -> Void) {
-        guard var nextURLString = wrapper?.next else {
+        guard var nextURLString = wrapper?.event else {
             completionHandler(nil, nil)
             return
         }
 
 
     }
-*/
+
 }
     
 extension Alamofire.Request {
@@ -97,15 +107,11 @@ extension Alamofire.Request {
             case .Success(let value):
                 let json = SwiftyJSON.JSON(value)
                 let wrapper = EventWrapper()
-                //wrapper.next = json["next"].stringValue
-                //wrapper.previous = json["previous"].stringValue
-                //wrapper.count = json["count"].intValue
+                wrapper.count = json.count
                 
                 
                 var allEvents:Array = Array<EventPost>()
                 for jsonEvents in json {
-                    //print(jsonEvents.0)
-                    //print(jsonEvents.1)
                     let newEvents = EventPost(json: jsonEvents.1, id: Int(jsonEvents.0))
                     allEvents.append(newEvents)
                 }

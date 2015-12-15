@@ -17,6 +17,12 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     var isLoadingEvents = false
     
     @IBOutlet weak var eventsTableViewNew2: UITableView?
+    @IBAction func unwindActionFromCreateEvent(segue: UIStoryboardSegue) {
+    events?.removeAll()
+    loadFirstEvents()
+    self.eventsTableViewNew2?.reloadData()
+    }
+    @IBAction func unwindActionFromCancel(segue: UIStoryboardSegue) {}
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -41,7 +47,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             self.eventsTableViewNew2?.reloadData()
         }
     }
-   /*
+   
     func loadMoreEvents()
     {
         self.isLoadingEvents = true
@@ -60,11 +66,11 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
                 print("got more!")
                 self.addEventsFromWrapper(wrapper)
                 self.isLoadingEvents = false
-                self.EventsTableViewNew2?.reloadData()
+                self.eventsTableViewNew2?.reloadData()
             })
         }
     }
-*/
+
     
 
     func addEventsFromWrapper(wrapper: EventWrapper?)
@@ -105,17 +111,18 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             // See if we need to load more events
             let rowsToLoadFromBottom = 5;
             let rowsLoaded = self.events!.count
-            /*
+            
+            
             if (!self.isLoadingEvents && (indexPath.row >= (rowsLoaded - rowsToLoadFromBottom)))
             {
-                let totalRows = (self.eventsWrapper?.count)!
-                let remainingEventsToLoad = totalRows - rowsLoaded;
+                let totalRows = self.eventsWrapper?.count
+                let remainingEventsToLoad: Int? = (totalRows! - rowsLoaded)
                 if (remainingEventsToLoad > 0)
                 {
-                    //self.loadMoreEvents()
+                    self.loadMoreEvents()
                 }
             }
-            */
+            
         }
         
         return cell

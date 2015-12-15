@@ -81,9 +81,19 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if postButton === sender {
-            let name = eventTitle.text ?? ""
+            let title = eventTitle.text ?? ""
             let description = eventDescription.text ?? ""
             let date = eventDateSelector.date
+            let UDIDset = UIDevice.currentDevice().identifierForVendor!.UUIDString
+            
+            //current time for record creation timestamp
+            let currentDateTime = NSDate()
+            let formatter = NSDateFormatter()
+            formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+            formatter.timeStyle = NSDateFormatterStyle.ShortStyle
+            let creationTimestamp = formatter.stringFromDate(currentDateTime)
+            print(creationTimestamp)
+            
             
             //rando number get
             let unsignedArrayCount = UInt32(10000000)
@@ -91,7 +101,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
             let randomNumber = Int(unsignedRandomNumber)
             
             //creates new event dict
-            newEvent = ["id": String(randomNumber), "name": name, "description": description, "startDate": String(date)]
+            newEvent = ["id": String(randomNumber), "title": title, "name": "\(title)-\(randomNumber)", "description": description, "startDate": String(date), "UDID": UDIDset, "timestamp": creationTimestamp, "eventStatus": "\(EventStatus.Active)"]
             //creates event object
             //event = Event(title: name, date: date, description: description, icon: randoIcon.randomIcon())
 

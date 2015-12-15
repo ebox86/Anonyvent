@@ -52,18 +52,15 @@
             </objects>
             <point key="canvasLocation" x="-758" y="-161"/>
         </scene>
-        <!--My Events-->
+        <!--My Events Nav -->
         <scene sceneID="YEo-Ff-nIx">
             <objects>
-                <navigationController id="Uxg-BR-jlU" sceneMemberID="viewController">
+                <navigationController title="My Events Nav " id="Uxg-BR-jlU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Events" image="gear_44" id="VPw-H0-g8N"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fgb-AT-DmL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="4Cg-SR-ehk" kind="relationship" relationship="rootViewController" id="7eE-F5-ou5"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wao-5O-ide" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -86,7 +83,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="tDI-EU-dlR">
-                                        <rect key="frame" x="0.0" y="86" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tDI-EU-dlR" id="yfY-3g-9d7">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -106,6 +103,9 @@
                     <navigationItem key="navigationItem" title="My Events" id="L0G-vn-RHx">
                         <barButtonItem key="leftBarButtonItem" title="Edit Handle" id="IFb-lN-c8A"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableview" destination="oj9-QG-SRJ" id="aK8-39-BPl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w2E-b1-7al" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -169,7 +169,9 @@
                     <navigationItem key="navigationItem" title="SomeApp" id="u5w-aW-I2h">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="fve-fF-OJQ">
                             <connections>
-                                <segue destination="WJs-o4-2Hk" kind="presentation" id="cbx-sR-3mY"/>
+                                <segue destination="WJs-o4-2Hk" kind="popoverPresentation" popoverAnchorBarButtonItem="fve-fF-OJQ" id="1MA-wM-0IG">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -240,19 +242,17 @@
                     <navigationItem key="navigationItem" title="New Event" id="SsP-P4-Mc9">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="LIg-k2-PFS">
                             <connections>
-                                <action selector="cancelButton:" destination="mYb-UV-Nyl" id="Whu-EZ-oIS"/>
-                                <segue destination="8d0-IF-MAC" kind="unwind" unwindAction="unwindToEventList:" id="9KD-WP-W5Z"/>
+                                <segue destination="2kP-hI-4HV" kind="unwind" unwindAction="unwindActionFromCancel:" id="vqo-Tc-8lC"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Post" id="qRL-Tc-sje">
                             <connections>
-                                <segue destination="8d0-IF-MAC" kind="unwind" unwindAction="unwindToEventList:" id="zok-SF-5Gq"/>
+                                <segue destination="2kP-hI-4HV" kind="unwind" unwindAction="unwindActionFromCreateEvent:" id="pgJ-7H-Icr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="cancelButton" destination="LIg-k2-PFS" id="Qme-bt-Xv0"/>
                         <outlet property="eventDateSelector" destination="nZc-mD-cRU" id="tVu-iQ-vUe"/>
                         <outlet property="eventDescription" destination="Ncq-vp-JlA" id="pt8-uA-G0G"/>
                         <outlet property="eventTitle" destination="m4e-OJ-rjq" id="pk9-xY-RCO"/>
@@ -260,7 +260,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q7H-z0-skd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="8d0-IF-MAC" userLabel="Exit" sceneMemberID="exit"/>
+                <exit id="2kP-hI-4HV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="463" y="723"/>
         </scene>
