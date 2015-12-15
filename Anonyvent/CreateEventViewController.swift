@@ -81,19 +81,21 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if postButton === sender {
-            let title = eventTitle.text ?? ""
+            //Set up date and time formats
+            let formatter = NSDateFormatter()
+            formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+            formatter.timeStyle = NSDateFormatterStyle.ShortStyle
+            
+            //constants to grab data from fields
+            let name = eventTitle.text ?? ""
             let description = eventDescription.text ?? ""
-            let date = eventDateSelector.date
+            let startDate = eventDateSelector.date
+            let formattedStartDate = formatter.stringFromDate(startDate)
             let UDIDset = UIDevice.currentDevice().identifierForVendor!.UUIDString
             
             //current time for record creation timestamp
             let currentDateTime = NSDate()
-            let formatter = NSDateFormatter()
-            formatter.dateStyle = NSDateFormatterStyle.ShortStyle
-            formatter.timeStyle = NSDateFormatterStyle.ShortStyle
             let creationTimestamp = formatter.stringFromDate(currentDateTime)
-            print(creationTimestamp)
-            
             
             //rando number get
             let unsignedArrayCount = UInt32(10000000)
@@ -101,7 +103,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
             let randomNumber = Int(unsignedRandomNumber)
             
             //creates new event dict
-            newEvent = ["id": String(randomNumber), "title": title, "name": "\(title)-\(randomNumber)", "description": description, "startDate": String(date), "UDID": UDIDset, "timestamp": creationTimestamp, "eventStatus": "\(EventStatus.Active)"]
+            newEvent = ["id": String(randomNumber), "eventName": name, "description": description, "startDate": String(formattedStartDate), "UDID": UDIDset, "eventTimestamp": String(creationTimestamp), "eventStatus": "\(EventStatus.Active)"]
             //creates event object
             //event = Event(title: name, date: date, description: description, icon: randoIcon.randomIcon())
 

@@ -12,12 +12,14 @@ import Alamofire
 
 
 enum EventPostFields: String {
-    case Title = "title"
     case StartDate = "startDate"
     case Location = "location"
     case Description = "description"
     case EventStatus = "eventStatus"
-    case EventTitle = "eventTitle"
+    case EventName = "eventName"
+    case Id = "id"
+    case EventTimestamp = "eventTimestamp"
+    case UDID = "udid"
 }
 
 enum EventStatus: String {
@@ -37,19 +39,19 @@ class EventWrapper {
 
 
 class EventPost {
-    var idNumber : Int?
-    var title : String?
-    var startDate : NSDate?
+    var id : Int?
+
+    var startDate : String?
     var location : String?
     var description : String?
     var eventStatus : String?
-    var eventTitle: String?
+    var eventName: String?
     
     required init(json: JSON, id: Int?) {
         print(json)
-        self.idNumber = id
-        self.title = json[EventPostFields.Title.rawValue].stringValue
-     //   self.startDate = json[EventPostFields.StartDate.rawValue].
+        self.id = id
+        self.eventName = json[EventPostFields.EventName.rawValue].stringValue
+        self.startDate = json[EventPostFields.StartDate.rawValue].stringValue
      //   self.location = json[EventPostFields.Location.rawValue].stringValue
         self.description = json[EventPostFields.Description.rawValue].stringValue
      //   self.eventStatus = json[EventPostFields.EventStatus.rawValue].stringValue
