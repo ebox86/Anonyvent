@@ -10,26 +10,42 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Foundation
+import CoreLocation
+import MapKit
 
-class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     var refreshControl = UIRefreshControl()
     let formatter = NSDateFormatter()
+    let locationManager = CLLocationManager()
     
     var events:Array<EventPost>?
     var eventsWrapper:EventWrapper? // holds the last wrapper that we've loaded
     var isLoadingEvents = false
+    let prefs = NSUserDefaults.standardUserDefaults()
     
     @IBOutlet weak var eventsTableViewNew2: UITableView?
     @IBAction func unwindActionFromCreateEvent(segue: UIStoryboardSegue) {
-    events?.removeAll()
-    loadFirstEvents()
-    self.eventsTableViewNew2?.reloadData()
+        events?.removeAll()
+        loadFirstEvents()
+        self.eventsTableViewNew2?.reloadData()
     }
     @IBAction func unwindActionFromCancel(segue: UIStoryboardSegue) {}
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
         
         // date format for pull refresher
         self.formatter.dateStyle = NSDateFormatterStyle.ShortStyle
@@ -39,7 +55,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.eventsTableViewNew2?.addSubview(refreshControl)
-        
+        events?.removeAll()
         self.loadFirstEvents()
     }
     
@@ -114,6 +130,10 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
 
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    }
     
 
     func addEventsFromWrapper(wrapper: EventWrapper?)
@@ -148,10 +168,15 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         if self.events != nil && self.events!.count >= indexPath.row
         {
+            print("You selected cell #\(indexPath.row)!")
             let events = self.events![indexPath.row]
             cell.textLabel?.text = events.eventName
             cell.detailTextLabel?.text = events.description
+            cell.layer.borderWidth = 0.5
+            cell.layer.borderColor = UIColor.lightGrayColor().CGColor
             //cell.textLabel?.text = events.startDate
+            
+          
             
             // See if we need to load more events
             let rowsToLoadFromBottom = 5;
@@ -173,6 +198,35 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
+    var eventTitleToPass: String!
+    var eventDescriptionToPass : String!
+    //var eventStartTimeToPass : String!
+    
+    /*override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let indexPath = tableView!.indexPathForSelectedRow();
+        let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!;
+        eventTitleToPass = currentCell.textLabel?.text
+        eventDescriptionToPass = currentCell.detailTextLabel?.text
+        performSegueWithIdentifier("detailViewSegue", sender: self)
+    }
+    */
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "detailViewSegue")
+        {
+            let navVC = segue.destinationViewController as! UINavigationController
+            let viewController = navVC.topViewController as! DetailViewController
+            //var viewController: DetailViewController = segue.destinationViewController as! DetailViewController
+            let indexPath = eventsTableViewNew2!.indexPathForCell(sender as! UITableViewCell)
+            let viewEvents = self.events![indexPath!.row]
+            let titleString = viewEvents.eventName
+            viewController.eventTitle = titleString
+            let cell = eventsTableViewNew2!.cellForRowAtIndexPath(indexPath!)
+            let eventTitleToPass = cell?.textLabel?.text
+            //viewController.eventTitleLabel.text = eventTitleToPass
+            //self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row % 2 == 0
         {
@@ -183,11 +237,5 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             cell.backgroundColor = UIColor.whiteColor()
         }
     }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-    }
 
-    
-    
 }

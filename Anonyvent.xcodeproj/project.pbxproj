@@ -10,6 +10,7 @@
 		5B891B891BFB3245000C2BDE /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B891B881BFB3245000C2BDE /* MainTabBarViewController.swift */; };
 		5B891B8B1BFB3261000C2BDE /* EventsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B891B8A1BFB3261000C2BDE /* EventsHomeViewController.swift */; };
 		5B891B8D1BFB328E000C2BDE /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B891B8C1BFB328E000C2BDE /* MyEventsViewController.swift */; };
+		A64206CD1C22C4750048510F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64206CC1C22C4750048510F /* DetailViewController.swift */; };
 		A6A22E0B1BEACD4300C9852B /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */; };
 		A6A22E0D1BF0843B00C9852B /* httpConnectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0C1BF0843B00C9852B /* httpConnectionHandler.swift */; };
 		A6A22E0F1BF09B2A00C9852B /* JsonSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */; };
@@ -179,6 +180,7 @@
 		5B891B881BFB3245000C2BDE /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		5B891B8A1BFB3261000C2BDE /* EventsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsHomeViewController.swift; sourceTree = "<group>"; };
 		5B891B8C1BFB328E000C2BDE /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
+		A64206CC1C22C4750048510F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../../../../macair/Development/Anonyvent/Anonyvent/DetailViewController.swift; sourceTree = "<group>"; };
 		A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		A6A22E0C1BF0843B00C9852B /* httpConnectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = httpConnectionHandler.swift; sourceTree = "<group>"; };
 		A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonSerializer.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				A6A22ED11BF2C7EC00C9852B /* EventPost.swift */,
 				A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */,
 				A6CB4FA71BE6B6F10027DF25 /* Main.storyboard */,
+				A64206CC1C22C4750048510F /* DetailViewController.swift */,
 				5B891B881BFB3245000C2BDE /* MainTabBarViewController.swift */,
 				5B891B8C1BFB328E000C2BDE /* MyEventsViewController.swift */,
 				A6CB4FAA1BE6B6F10027DF25 /* Assets.xcassets */,
@@ -610,6 +613,7 @@
 				5B891B8D1BFB328E000C2BDE /* MyEventsViewController.swift in Sources */,
 				A6CB4FDA1BE6CE950027DF25 /* EventDate.swift in Sources */,
 				A6A22E0B1BEACD4300C9852B /* CreateEventViewController.swift in Sources */,
+				A64206CD1C22C4750048510F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

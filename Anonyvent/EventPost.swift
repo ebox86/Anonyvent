@@ -20,6 +20,7 @@ enum EventPostFields: String {
     case Id = "id"
     case EventTimestamp = "eventTimestamp"
     case UDID = "udid"
+    case UUID = "uuid"
 }
 
 enum EventStatus: String {
@@ -40,12 +41,14 @@ class EventWrapper {
 
 class EventPost {
     var id : Int?
-
     var startDate : String?
     var location : String?
     var description : String?
     var eventStatus : String?
     var eventName: String?
+    var eventTimestamp: String?
+    var udid: String?
+    var uuid: String?
     
     required init(json: JSON, id: Int?) {
         print(json)
@@ -54,9 +57,10 @@ class EventPost {
         self.startDate = json[EventPostFields.StartDate.rawValue].stringValue
      //   self.location = json[EventPostFields.Location.rawValue].stringValue
         self.description = json[EventPostFields.Description.rawValue].stringValue
-     //   self.eventStatus = json[EventPostFields.EventStatus.rawValue].stringValue
-     //   self.eventTitle = json[EventPostFields.EventTitle.rawValue].stringValue
-    
+        self.eventStatus = json[EventPostFields.EventStatus.rawValue].stringValue
+        self.eventTimestamp = json[EventPostFields.EventTimestamp.rawValue].stringValue
+        self.udid = json[EventPostFields.UDID.rawValue].stringValue
+        self.uuid = json[EventPostFields.UUID.rawValue].stringValue
     }
     
     class func endpointForApigee() -> String {

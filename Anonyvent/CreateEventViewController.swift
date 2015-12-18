@@ -19,11 +19,11 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
     @IBOutlet weak var postButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
-    
+    var keyboardDismissTapGesture: UIGestureRecognizer?
     var event: Event?
-    var newEvent = [String: String]()
+    var newEvent = [String: AnyObject]()
     //var randoIcon = EventIcons.randomIcon
-    //var newSession = httpConnectionHandler
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +41,29 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
             eventDateSelector.date = event.date
             
         }
-        
+        self.view.addSubview(eventTitle!)
+        self.view.addSubview(eventDescription!)
         // Enable the Post button only if the text field has a valid Event name
         checkValidEventName()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: Selector("keyboardWillShow:"),
+            name: UIKeyboardWillShowNotification,
+            object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: Selector("keyboardWillHide:"),
+            name: UIKeyboardWillHideNotification,
+            object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        
+        super.viewWillDisappear(animated)
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,6 +81,27 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
     
     
     //MARK - UITextFieldDelegate
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if keyboardDismissTapGesture == nil
+        {
+            keyboardDismissTapGesture = UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard:"))
+            self.view.addGestureRecognizer(keyboardDismissTapGesture!)
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if keyboardDismissTapGesture != nil
+        {
+            self.view.removeGestureRecognizer(keyboardDismissTapGesture!)
+            keyboardDismissTapGesture = nil
+        }
+    }
+    
+    func dismissKeyboard(sender: AnyObject) {
+        eventTitle?.resignFirstResponder()
+        eventDescription?.resignFirstResponder()
+    }
     
     func textFieldDidBeginEditing(textField: UITextField) {
         postButton.enabled = false
@@ -98,12 +139,14 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
             let creationTimestamp = formatter.stringFromDate(currentDateTime)
             
             //rando number get
+            
             let unsignedArrayCount = UInt32(10000000)
             let unsignedRandomNumber = arc4random_uniform(unsignedArrayCount)
             let randomNumber = Int(unsignedRandomNumber)
+
             
             //creates new event dict
-            newEvent = ["id": String(randomNumber), "eventName": name, "description": description, "startDate": String(formattedStartDate), "UDID": UDIDset, "eventTimestamp": String(creationTimestamp), "eventStatus": "\(EventStatus.Active)"]
+            newEvent = ["id": String(randomNumber), "eventName": name, "description": description, "startDate": String(formattedStartDate), "UDID": UDIDset, "eventTimestamp": String(creationTimestamp), "eventStatus": "\(EventStatus.Active)"/*, "location" : ["latitude" : 123.123, "longitude": 123.456]*/]
             //creates event object
             //event = Event(title: name, date: date, description: description, icon: randoIcon.randomIcon())
 
