@@ -14,17 +14,22 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
     @IBOutlet weak var eventStartDateLabel: UILabel!
     @IBOutlet weak var done: UIBarButtonItem!
     @IBOutlet weak var eventTitleLabel: UILabel!
+    @IBOutlet weak var eventDescriptionLabel: UITextView!
+    
+
     var eventTitle : String!
     var eventStartDate : String!
     var eventDescription : String!
     var authorUDID : String!
     var uuid : String!
-    
+       
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.eventTitleLabel.text = eventTitle
+        self.eventDescriptionLabel.text = eventDescription
+        self.eventStartDateLabel.text = eventStartDate
         // Do any additional setup after loading the view.
     }
 

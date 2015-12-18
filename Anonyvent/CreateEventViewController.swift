@@ -18,9 +18,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
     @IBOutlet weak var eventDateSelector: UIDatePicker!
     @IBOutlet weak var postButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var charCounter: UILabel!
     
     var keyboardDismissTapGesture: UIGestureRecognizer?
-    var event: Event?
     var newEvent = [String: AnyObject]()
     //var randoIcon = EventIcons.randomIcon
     
@@ -31,21 +31,26 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
         // Do any additional setup after loading the view.
         
         //Handle the text fields user input through the delegate callbacks
+        self.charCounter.text = "40"
         eventTitle.delegate = self
         
-        if let event = event {
-            
-            navigationItem.title = event.title
-            eventTitle.text = event.title
-            eventDescription.text = event.description
-            eventDateSelector.date = event.date
-            
-        }
         self.view.addSubview(eventTitle!)
         self.view.addSubview(eventDescription!)
         // Enable the Post button only if the text field has a valid Event name
         checkValidEventName()
     }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        var newLength = 40
+        newLength = textField.text!.utf16.count + string.utf16.count - range.length
+        if(newLength <= 40){
+            self.charCounter.text = "\(40 - newLength)"
+            return true
+        }else{
+            return false
+        }
+    }
+
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

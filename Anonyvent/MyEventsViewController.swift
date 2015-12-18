@@ -10,7 +10,7 @@ import UIKit
 
 class MyEventsViewController: UIViewController {
 
-    @IBOutlet weak var tableview: UITableView!
+   // @IBOutlet weak var tableview: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

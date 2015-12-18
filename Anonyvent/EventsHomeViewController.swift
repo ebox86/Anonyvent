@@ -24,6 +24,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     let prefs = NSUserDefaults.standardUserDefaults()
     
     @IBOutlet weak var eventsTableViewNew2: UITableView?
+    
     @IBAction func unwindActionFromCreateEvent(segue: UIStoryboardSegue) {
         events?.removeAll()
         loadFirstEvents()
@@ -165,16 +166,18 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! EventsTableViewCell
         if self.events != nil && self.events!.count >= indexPath.row
         {
-            print("You selected cell #\(indexPath.row)!")
+            //print("You selected cell #\(indexPath.row)!")
             let events = self.events![indexPath.row]
-            cell.textLabel?.text = events.eventName
-            cell.detailTextLabel?.text = events.description
-            cell.layer.borderWidth = 0.5
+            cell.titleLabel?.text = events.eventName
+            cell.eventDetailLabel?.text = events.description
+            //cell.layer.borderWidth = 0.5
             cell.layer.borderColor = UIColor.lightGrayColor().CGColor
-            //cell.textLabel?.text = events.startDate
+            cell.eventDateLabel?.text = events.startDate
+            
             
           
             
@@ -198,9 +201,6 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
-    var eventTitleToPass: String!
-    var eventDescriptionToPass : String!
-    //var eventStartTimeToPass : String!
     
     /*override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let indexPath = tableView!.indexPathForSelectedRow();
@@ -218,10 +218,11 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             //var viewController: DetailViewController = segue.destinationViewController as! DetailViewController
             let indexPath = eventsTableViewNew2!.indexPathForCell(sender as! UITableViewCell)
             let viewEvents = self.events![indexPath!.row]
-            let titleString = viewEvents.eventName
-            viewController.eventTitle = titleString
-            let cell = eventsTableViewNew2!.cellForRowAtIndexPath(indexPath!)
-            let eventTitleToPass = cell?.textLabel?.text
+            viewController.eventTitle = viewEvents.eventName
+            viewController.eventDescription = viewEvents.description
+            viewController.eventStartDate = viewEvents.startDate
+            //let cell = eventsTableViewNew2!.cellForRowAtIndexPath(indexPath!)
+            //let eventTitleToPass = cell?.textLabel?.text
             //viewController.eventTitleLabel.text = eventTitleToPass
             //self.navigationController?.pushViewController(viewController, animated: true)
         }

@@ -11,9 +11,8 @@
 		5B891B8B1BFB3261000C2BDE /* EventsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B891B8A1BFB3261000C2BDE /* EventsHomeViewController.swift */; };
 		5B891B8D1BFB328E000C2BDE /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B891B8C1BFB328E000C2BDE /* MyEventsViewController.swift */; };
 		A64206CD1C22C4750048510F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64206CC1C22C4750048510F /* DetailViewController.swift */; };
+		A67FFDD01C2418BD001E21AC /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FFDCF1C2418BD001E21AC /* EventsTableViewCell.swift */; };
 		A6A22E0B1BEACD4300C9852B /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */; };
-		A6A22E0D1BF0843B00C9852B /* httpConnectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0C1BF0843B00C9852B /* httpConnectionHandler.swift */; };
-		A6A22E0F1BF09B2A00C9852B /* JsonSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */; };
 		A6A22E931BF15ECF00C9852B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A22E861BF15CA700C9852B /* Alamofire.framework */; };
 		A6A22E941BF15ECF00C9852B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6A22E861BF15CA700C9852B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6A22EC91BF15FB700C9852B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A22EBB1BF15F7300C9852B /* SwiftyJSON.framework */; };
@@ -25,11 +24,6 @@
 		A6CB4FAE1BE6B6F10027DF25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CB4FAC1BE6B6F10027DF25 /* LaunchScreen.storyboard */; };
 		A6CB4FB91BE6B6F10027DF25 /* AnonyventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FB81BE6B6F10027DF25 /* AnonyventTests.swift */; };
 		A6CB4FC41BE6B6F10027DF25 /* AnonyventUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FC31BE6B6F10027DF25 /* AnonyventUITests.swift */; };
-		A6CB4FD21BE6B71F0027DF25 /* EventIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FD11BE6B71F0027DF25 /* EventIcons.swift */; };
-		A6CB4FD41BE6C02B0027DF25 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FD31BE6C02B0027DF25 /* EventTableViewCell.swift */; };
-		A6CB4FD61BE6C6810027DF25 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FD51BE6C6810027DF25 /* EventTableViewController.swift */; };
-		A6CB4FD81BE6CADD0027DF25 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FD71BE6CADD0027DF25 /* Event.swift */; };
-		A6CB4FDA1BE6CE950027DF25 /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FD91BE6CE950027DF25 /* EventDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,9 +175,8 @@
 		5B891B8A1BFB3261000C2BDE /* EventsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsHomeViewController.swift; sourceTree = "<group>"; };
 		5B891B8C1BFB328E000C2BDE /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		A64206CC1C22C4750048510F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../../../../macair/Development/Anonyvent/Anonyvent/DetailViewController.swift; sourceTree = "<group>"; };
+		A67FFDCF1C2418BD001E21AC /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
-		A6A22E0C1BF0843B00C9852B /* httpConnectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = httpConnectionHandler.swift; sourceTree = "<group>"; };
-		A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonSerializer.swift; sourceTree = "<group>"; };
 		A6A22E7B1BF15CA600C9852B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		A6A22EB01BF15F7300C9852B /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
 		A6A22ECE1BF1935C00C9852B /* testplay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = testplay.playground; sourceTree = "<group>"; };
@@ -200,11 +193,6 @@
 		A6CB4FBF1BE6B6F10027DF25 /* AnonyventUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnonyventUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CB4FC31BE6B6F10027DF25 /* AnonyventUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonyventUITests.swift; sourceTree = "<group>"; };
 		A6CB4FC51BE6B6F10027DF25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6CB4FD11BE6B71F0027DF25 /* EventIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventIcons.swift; sourceTree = "<group>"; };
-		A6CB4FD31BE6C02B0027DF25 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
-		A6CB4FD51BE6C6810027DF25 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
-		A6CB4FD71BE6CADD0027DF25 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		A6CB4FD91BE6CE950027DF25 /* EventDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,9 +275,9 @@
 		A6CB4FA21BE6B6F10027DF25 /* Anonyvent */ = {
 			isa = PBXGroup;
 			children = (
-				A6CB4FDB1BE703A70027DF25 /* Legacy */,
 				A6CB4FA31BE6B6F10027DF25 /* AppDelegate.swift */,
 				5B891B8A1BFB3261000C2BDE /* EventsHomeViewController.swift */,
+				A67FFDCF1C2418BD001E21AC /* EventsTableViewCell.swift */,
 				A6A22ED11BF2C7EC00C9852B /* EventPost.swift */,
 				A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */,
 				A6CB4FA71BE6B6F10027DF25 /* Main.storyboard */,
@@ -320,20 +308,6 @@
 				A6CB4FC51BE6B6F10027DF25 /* Info.plist */,
 			);
 			path = AnonyventUITests;
-			sourceTree = "<group>";
-		};
-		A6CB4FDB1BE703A70027DF25 /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-				A6A22E0C1BF0843B00C9852B /* httpConnectionHandler.swift */,
-				A6A22E0E1BF09B2A00C9852B /* JsonSerializer.swift */,
-				A6CB4FD71BE6CADD0027DF25 /* Event.swift */,
-				A6CB4FD91BE6CE950027DF25 /* EventDate.swift */,
-				A6CB4FD11BE6B71F0027DF25 /* EventIcons.swift */,
-				A6CB4FD31BE6C02B0027DF25 /* EventTableViewCell.swift */,
-				A6CB4FD51BE6C6810027DF25 /* EventTableViewController.swift */,
-			);
-			name = Legacy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -601,17 +575,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B891B8B1BFB3261000C2BDE /* EventsHomeViewController.swift in Sources */,
-				A6CB4FD41BE6C02B0027DF25 /* EventTableViewCell.swift in Sources */,
-				A6CB4FD21BE6B71F0027DF25 /* EventIcons.swift in Sources */,
 				A6A22ED21BF2C7EC00C9852B /* EventPost.swift in Sources */,
 				5B891B891BFB3245000C2BDE /* MainTabBarViewController.swift in Sources */,
-				A6A22E0D1BF0843B00C9852B /* httpConnectionHandler.swift in Sources */,
 				A6CB4FA41BE6B6F10027DF25 /* AppDelegate.swift in Sources */,
-				A6A22E0F1BF09B2A00C9852B /* JsonSerializer.swift in Sources */,
-				A6CB4FD81BE6CADD0027DF25 /* Event.swift in Sources */,
-				A6CB4FD61BE6C6810027DF25 /* EventTableViewController.swift in Sources */,
+				A67FFDD01C2418BD001E21AC /* EventsTableViewCell.swift in Sources */,
 				5B891B8D1BFB328E000C2BDE /* MyEventsViewController.swift in Sources */,
-				A6CB4FDA1BE6CE950027DF25 /* EventDate.swift in Sources */,
 				A6A22E0B1BEACD4300C9852B /* CreateEventViewController.swift in Sources */,
 				A64206CD1C22C4750048510F /* DetailViewController.swift in Sources */,
 			);
