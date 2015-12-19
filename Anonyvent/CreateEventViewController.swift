@@ -9,12 +9,13 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import QuartzCore
 
-class CreateEventViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
+class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate {
     
     
     @IBOutlet weak var eventTitle: UITextField!
-    @IBOutlet weak var eventDescription: UITextField!
+    @IBOutlet weak var eventDescription: UITextView!
     @IBOutlet weak var eventDateSelector: UIDatePicker!
     @IBOutlet weak var postButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -29,10 +30,15 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        eventDescription.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
+        eventDescription.text = "Description"
+        eventDescription.textColor = UIColor.lightGrayColor()
+        eventTitle.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0)
         
         //Handle the text fields user input through the delegate callbacks
         self.charCounter.text = "40"
         eventTitle.delegate = self
+        eventDescription.delegate = self
         
         self.view.addSubview(eventTitle!)
         self.view.addSubview(eventDescription!)
@@ -50,7 +56,21 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
             return false
         }
     }
-
+    
+    // resign keyboard for eventTitle TextField on 'done'
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        eventTitle.resignFirstResponder()
+        return true
+    }
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -119,7 +139,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
     
     func textFieldDidEndEditing(textField: UITextField) {
         checkValidEventName()
-        navigationItem.title = eventTitle.text
+        //navigationItem.title = eventTitle.text
     }
     
     
@@ -152,9 +172,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UINaviga
             
             //creates new event dict
             newEvent = ["id": String(randomNumber), "eventName": name, "description": description, "startDate": String(formattedStartDate), "UDID": UDIDset, "eventTimestamp": String(creationTimestamp), "eventStatus": "\(EventStatus.Active)"/*, "location" : ["latitude" : 123.123, "longitude": 123.456]*/]
-            //creates event object
-            //event = Event(title: name, date: date, description: description, icon: randoIcon.randomIcon())
-
+            //makes api call
             Alamofire.request(.POST, "https://ebox86-test.apigee.net/anonyvent/event", parameters: newEvent, encoding: .JSON)
         }
         // Get the new view controller using segue.destinationViewController.
