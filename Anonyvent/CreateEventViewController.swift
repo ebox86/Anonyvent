@@ -20,6 +20,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     @IBOutlet weak var postButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var charCounter: UILabel!
+    @IBOutlet weak var charCounter2: UILabel!
     
     var keyboardDismissTapGesture: UIGestureRecognizer?
     var newEvent = [String: AnyObject]()
@@ -30,15 +31,20 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        eventDescription.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
+        //eventDescription.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
         eventDescription.text = "Description"
         eventDescription.textColor = UIColor.lightGrayColor()
         eventTitle.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0)
+        eventTitle.attributedPlaceholder = NSAttributedString(string:"Event Title",
+            attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
         
         //Handle the text fields user input through the delegate callbacks
         self.charCounter.text = "40"
+        self.charCounter2.text = "140"
         eventTitle.delegate = self
         eventDescription.delegate = self
+        
+        eventDescription.selectedTextRange = eventDescription.textRangeFromPosition(eventDescription.beginningOfDocument, toPosition: eventDescription.beginningOfDocument)
         
         self.view.addSubview(eventTitle!)
         self.view.addSubview(eventDescription!)
@@ -51,9 +57,67 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         newLength = textField.text!.utf16.count + string.utf16.count - range.length
         if(newLength <= 40){
             self.charCounter.text = "\(40 - newLength)"
+            if ((40 - newLength) < 40) {
+                postButton.enabled = true
+            } else {
+                postButton.enabled = false
+            }
             return true
         }else{
             return false
+        }
+    }
+    
+    func textView(textView: UITextView, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        var newLength = 140
+        newLength = textView.text!.utf16.count + string.utf16.count - range.length
+        if(newLength <= 140){
+            self.charCounter2.text = "\(140 - newLength)"
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        
+        // Combine the textView text and the replacement text to
+        // create the updated text string
+        let currentText:NSString = eventDescription.text
+        let updatedText = currentText.stringByReplacingCharactersInRange(range, withString: text)
+        
+        // If updated text view will be empty, add the placeholder
+        // and set the cursor to the beginning of the text view
+        if (updatedText.isEmpty){
+            
+            eventDescription.text = "Description"
+            eventDescription.textColor = UIColor.lightGrayColor()
+            
+            eventDescription.selectedTextRange = eventDescription.textRangeFromPosition(eventDescription.beginningOfDocument, toPosition: eventDescription.beginningOfDocument)
+            
+            return false
+        }
+            
+            // Else if the text view's placeholder is showing and the
+            // length of the replacement string is greater than 0, clear
+            // the text view and set its color to black to prepare for
+            // the user's entry
+        else if eventDescription.textColor == UIColor.lightGrayColor() && !text.isEmpty {
+            eventDescription.text = nil
+            eventDescription.textColor = UIColor.blackColor()
+        }
+        if (text == "\n") {
+            eventDescription.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    func textViewDidChangeSelection(textView: UITextView) {
+        if self.view.window != nil {
+            if eventDescription.textColor == UIColor.lightGrayColor() {
+                eventDescription.selectedTextRange = eventDescription.textRangeFromPosition(eventDescription.beginningOfDocument, toPosition: eventDescription.beginningOfDocument)
+            }
         }
     }
     
@@ -62,15 +126,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         eventTitle.resignFirstResponder()
         return true
     }
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if (text == "\n") {
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-    }
-    
-    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -127,21 +182,11 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         eventTitle?.resignFirstResponder()
         eventDescription?.resignFirstResponder()
     }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        postButton.enabled = false
-    }
-    
+
     func checkValidEventName() {
         let text = eventTitle.text ?? ""
         postButton.enabled = !text.isEmpty
     }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        checkValidEventName()
-        //navigationItem.title = eventTitle.text
-    }
-    
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -154,8 +199,8 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
             
             //constants to grab data from fields
             let name = eventTitle.text ?? ""
-            let description = eventDescription.text ?? ""
             let startDate = eventDateSelector.date
+            let description = eventDescription.text ?? ""
             let formattedStartDate = formatter.stringFromDate(startDate)
             let UDIDset = UIDevice.currentDevice().identifierForVendor!.UUIDString
             

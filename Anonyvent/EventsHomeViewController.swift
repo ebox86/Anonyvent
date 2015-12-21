@@ -14,6 +14,8 @@ import CoreLocation
 import MapKit
 
 class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
+    @IBOutlet weak var createPost: UIBarButtonItem!
+    
     var refreshControl = UIRefreshControl()
     let formatter = NSDateFormatter()
     let locationManager = CLLocationManager()
@@ -38,6 +40,11 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         
         // Ask for Authorisation from the User.
         self.locationManager.requestAlwaysAuthorization()
+        
+        self.title = "SomeApp"
+        
+        let navigationBar = navigationController!.navigationBar
+        navigationBar.tintColor = UIColor.blueColor()
         
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
@@ -178,9 +185,6 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             cell.layer.borderColor = UIColor.lightGrayColor().CGColor
             cell.eventDateLabel?.text = events.startDate
             
-            
-          
-            
             // See if we need to load more events
             let rowsToLoadFromBottom = 5;
             let rowsLoaded = self.events!.count
@@ -213,8 +217,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "detailViewSegue")
         {
-            let navVC = segue.destinationViewController as! UINavigationController
-            let viewController = navVC.topViewController as! DetailViewController
+            let viewController = segue.destinationViewController as! DetailViewController
             //var viewController: DetailViewController = segue.destinationViewController as! DetailViewController
             let indexPath = eventsTableViewNew2!.indexPathForCell(sender as! UITableViewCell)
             let viewEvents = self.events![indexPath!.row]

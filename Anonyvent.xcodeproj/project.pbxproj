@@ -184,7 +184,7 @@
 		A6CB4FA01BE6B6F10027DF25 /* Anonyvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Anonyvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CB4FA31BE6B6F10027DF25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6CB4FA81BE6B6F10027DF25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A6CB4FAA1BE6B6F10027DF25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A6CB4FAA1BE6B6F10027DF25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Anonyvent/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		A6CB4FAD1BE6B6F10027DF25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6CB4FAF1BE6B6F10027DF25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6CB4FB41BE6B6F10027DF25 /* AnonyventTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnonyventTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };

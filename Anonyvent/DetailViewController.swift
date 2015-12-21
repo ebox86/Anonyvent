@@ -12,7 +12,6 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
 
 
     @IBOutlet weak var eventStartDateLabel: UILabel!
-    @IBOutlet weak var done: UIBarButtonItem!
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventDescriptionLabel: UITextView!
     
@@ -22,7 +21,8 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
     var eventDescription : String!
     var authorUDID : String!
     var uuid : String!
-       
+    
+    let currentDeviceUDID = UIDevice.currentDevice().identifierForVendor!.UUIDString
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +42,6 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
     
     // MARK: - Navigation
     
-    
-    @IBAction func done(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
     
     /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
