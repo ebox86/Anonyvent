@@ -177,7 +177,6 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! EventsTableViewCell
         if self.events != nil && self.events!.count >= indexPath.row
         {
-            //print("You selected cell #\(indexPath.row)!")
             let events = self.events![indexPath.row]
             cell.titleLabel?.text = events.eventName
             cell.eventDetailLabel?.text = events.description
@@ -205,7 +204,6 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
-    
     /*override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let indexPath = tableView!.indexPathForSelectedRow();
         let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!;
@@ -214,11 +212,11 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         performSegueWithIdentifier("detailViewSegue", sender: self)
     }
     */
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "detailViewSegue")
         {
             let viewController = segue.destinationViewController as! DetailViewController
-            //var viewController: DetailViewController = segue.destinationViewController as! DetailViewController
             let indexPath = eventsTableViewNew2!.indexPathForCell(sender as! UITableViewCell)
             let viewEvents = self.events![indexPath!.row]
             viewController.eventTitle = viewEvents.eventName
@@ -229,14 +227,11 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             viewController.eventStatus = viewEvents.eventStatus
             viewController.postId = viewEvents.postId
             viewController.eventCreatedTimestamp = viewEvents.eventTimestamp
-
-            //let cell = eventsTableViewNew2!.cellForRowAtIndexPath(indexPath!)
-            //let eventTitleToPass = cell?.textLabel?.text
-            //viewController.eventTitleLabel.text = eventTitleToPass
-            //self.navigationController?.pushViewController(viewController, animated: true)
+            viewController.eventLastModified = viewEvents.eventLastModified
         }
     }
     
+    /*
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row % 2 == 0
         {
@@ -247,5 +242,6 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             cell.backgroundColor = UIColor.whiteColor()
         }
     }
+    */
 
 }

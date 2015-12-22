@@ -259,11 +259,23 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" address="YES"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lastModified" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGF-Ao-snj">
+                                <rect key="frame" x="20" y="522" width="234" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Djq-8J-wrI"/>
+                                    <constraint firstAttribute="width" constant="234" id="g3V-RH-XIz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="tHE-9e-5dg" firstAttribute="top" secondItem="uGF-Ao-snj" secondAttribute="bottom" constant="8" symbolic="YES" id="D9f-VO-f58"/>
                             <constraint firstItem="gvk-dw-GVT" firstAttribute="top" secondItem="enY-1J-VWw" secondAttribute="bottom" constant="14" id="IQX-h7-wXJ"/>
                             <constraint firstItem="enY-1J-VWw" firstAttribute="leading" secondItem="NVt-XU-dan" secondAttribute="leading" id="LHS-zi-Mkr"/>
+                            <constraint firstItem="uGF-Ao-snj" firstAttribute="leading" secondItem="gvk-dw-GVT" secondAttribute="leading" id="QT4-03-8W9"/>
                             <constraint firstItem="enY-1J-VWw" firstAttribute="top" secondItem="NVt-XU-dan" secondAttribute="bottom" constant="15" id="SIH-Wk-0UK"/>
                             <constraint firstItem="NVt-XU-dan" firstAttribute="trailing" secondItem="enY-1J-VWw" secondAttribute="trailing" id="YVN-j2-6hz"/>
                             <constraint firstItem="gvk-dw-GVT" firstAttribute="leading" secondItem="taN-Pe-hVl" secondAttribute="leadingMargin" id="g3n-O5-SJz"/>
@@ -279,6 +291,7 @@
                         <outlet property="eventDescriptionLabel" destination="gvk-dw-GVT" id="FfB-Uy-NOH"/>
                         <outlet property="eventStartDateLabel" destination="enY-1J-VWw" id="egv-Nt-DRu"/>
                         <outlet property="eventTitleLabel" destination="NVt-XU-dan" id="goX-hc-wnj"/>
+                        <outlet property="lastModified" destination="uGF-Ao-snj" id="6Oa-N7-boe"/>
                         <segue destination="mYb-UV-Nyl" kind="show" identifier="editEventSegue" id="Bek-bN-iy5"/>
                     </connections>
                 </viewController>

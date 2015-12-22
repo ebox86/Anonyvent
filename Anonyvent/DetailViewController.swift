@@ -14,6 +14,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
     @IBOutlet weak var eventStartDateLabel: UILabel!
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventDescriptionLabel: UITextView!
+    @IBOutlet weak var lastModified: UILabel!
 
 
     var eventTitle : String!
@@ -24,6 +25,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
     var eventStatus : String?
     var postId : Int?
     var eventCreatedTimestamp : String?
+    var eventLastModified : String?
     
     let currentDeviceUDID = UIDevice.currentDevice().identifierForVendor!.UUIDString
     
@@ -49,6 +51,31 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
             ownerFlag = false
             navigationItem.rightBarButtonItems = []
             print(ownerFlag)
+        }
+        /*
+        //Set up date and time formats
+        let formatter = NSDateFormatter()
+        let timeZone = NSTimeZone(name: "UTC")
+        formatter.timeZone = timeZone
+        formatter.locale = NSLocale.currentLocale()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        //formatter.formatterBehavior = NSDateFormatterBehavior.BehaviorDefault
+
+        //current time for record creation timestamp
+        let currentDateTime = NSDate()
+        */
+        if (eventLastModified != "") {
+            /*
+            print(eventLastModified!)
+            let date1 = currentDateTime
+            let date2 = formatter.dateFromString(eventLastModified!)
+            
+            let compareTimestamps = date1.compare(date2!)
+            let interval : NSTimeInterval = date1.timeIntervalSinceDate(date2!)
+            */
+            lastModified.text = "last modified \(eventLastModified!)"
+        } else {
+            lastModified.text = ""
         }
         // Do any additional setup after loading the view.
         
@@ -79,9 +106,6 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
         if (segue.identifier == "editEventSegue")
         {
             let viewController = segue.destinationViewController as! CreateEventViewController
-            //var viewController: DetailViewController = segue.destinationViewController as! DetailViewController
-            //let indexPath = eventsTableViewNew2!.indexPathForCell(sender as! UITableViewCell)
-            //let viewEvents = self.events![indexPath!.row]
             viewController.editTitle = eventTitle
             viewController.editDescrip = eventDescription
             viewController.eventStartDate = eventStartDate
@@ -91,11 +115,6 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
             viewController.eventCreatedTimestamp = eventCreatedTimestamp
             viewController.postId = postId
             viewController.editFlag = true
-            
-            //let cell = eventsTableViewNew2!.cellForRowAtIndexPath(indexPath!)
-            //let eventTitleToPass = cell?.textLabel?.text
-            //viewController.eventTitleLabel.text = eventTitleToPass
-            //self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
 
