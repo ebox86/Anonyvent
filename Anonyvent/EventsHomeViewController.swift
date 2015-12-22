@@ -224,6 +224,12 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             viewController.eventTitle = viewEvents.eventName
             viewController.eventDescription = viewEvents.description
             viewController.eventStartDate = viewEvents.startDate
+            viewController.authorUDID = viewEvents.udid
+            viewController.uuid = viewEvents.uuid
+            viewController.eventStatus = viewEvents.eventStatus
+            viewController.postId = viewEvents.postId
+            viewController.eventCreatedTimestamp = viewEvents.eventTimestamp
+
             //let cell = eventsTableViewNew2!.cellForRowAtIndexPath(indexPath!)
             //let eventTitleToPass = cell?.textLabel?.text
             //viewController.eventTitleLabel.text = eventTitleToPass

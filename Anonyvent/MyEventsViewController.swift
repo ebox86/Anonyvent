@@ -9,12 +9,11 @@
 import UIKit
 
 class MyEventsViewController: UIViewController {
-
-   // @IBOutlet weak var tableview: UITableView!
     
+    @IBOutlet weak var udidLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        udidLabel.text = UIDevice.currentDevice().identifierForVendor!.UUIDString.uppercaseString
         // Do any additional setup after loading the view.
     }
 
@@ -23,9 +22,6 @@ class MyEventsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func clearData(sender: UIButton) {
-        //sampleData.events.removeAll()
-    }
 
     /*
     // MARK: - Navigation

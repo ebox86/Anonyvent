@@ -23,13 +23,21 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     @IBOutlet weak var charCounter2: UILabel!
     
     var keyboardDismissTapGesture: UIGestureRecognizer?
-    var newEvent = [String: AnyObject]()
+    var eventRequest = [String: AnyObject]()
     //var randoIcon = EventIcons.randomIcon
-    
+    var editFlag = false
+    var postId : Int?
+    var eventStartDate : String?
+    var eventCreatedTimestamp : String?
+    var udid : String?
+    var uuid : String?
+    var eventStatus : String?
+    var editTitle : String?
+    var editDescrip : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Create Event"
         // Do any additional setup after loading the view.
         //eventDescription.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
         eventDescription.text = "Description"
@@ -37,10 +45,25 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         eventTitle.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0)
         eventTitle.attributedPlaceholder = NSAttributedString(string:"Event Title",
             attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
-        
+        if editFlag == true {
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+            dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+            let updatedDateFormatted = dateFormatter.dateFromString(eventStartDate!)
+            eventDateSelector.date = updatedDateFormatted!
+            self.title = "Update Event"
+            postButton.title = "Done"
+        }
         //Handle the text fields user input through the delegate callbacks
-        self.charCounter.text = "40"
-        self.charCounter2.text = "140"
+        if(editFlag == true){
+            let length = editTitle!.characters.count
+            let length2 = editDescrip!.characters.count
+            self.charCounter.text = String(40 - length)
+            self.charCounter2.text = String(100 - length2)
+        } else {
+            self.charCounter.text = "40"
+            self.charCounter2.text = "100"
+        }
         eventTitle.delegate = self
         eventDescription.delegate = self
         
@@ -48,6 +71,14 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         self.view.addSubview(eventTitle!)
         self.view.addSubview(eventDescription!)
+        
+        if(editFlag == true){
+            self.eventTitle.text = editTitle
+            self.eventDescription.text = editDescrip
+            if eventDescription.text != "Description" {
+                eventDescription.textColor = UIColor.blackColor()
+            }
+        }
         // Enable the Post button only if the text field has a valid Event name
         checkValidEventName()
     }
@@ -68,19 +99,18 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         }
     }
     
-    func textView(textView: UITextView, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        var newLength = 140
-        newLength = textView.text!.utf16.count + string.utf16.count - range.length
-        if(newLength <= 140){
-            self.charCounter2.text = "\(140 - newLength)"
-            return true
-        }else{
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        var newLength = 100
+        newLength = textView.text!.utf16.count + text.utf16.count - range.length
+        if(newLength <= 100){
+            if(textView.text == "Description"){
+                newLength -= 11
+            }
+            self.charCounter2.text = "\(100 - newLength)"
+        } else {
             return false
         }
-    }
-    
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        
+
         // Combine the textView text and the replacement text to
         // create the updated text string
         let currentText:NSString = eventDescription.text
@@ -115,7 +145,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     
     func textViewDidChangeSelection(textView: UITextView) {
         if self.view.window != nil {
-            if eventDescription.textColor == UIColor.lightGrayColor() {
+            if (eventDescription.textColor == UIColor.lightGrayColor() && eventDescription.text == "Description") {
                 eventDescription.selectedTextRange = eventDescription.textRangeFromPosition(eventDescription.beginningOfDocument, toPosition: eventDescription.beginningOfDocument)
             }
         }
@@ -192,33 +222,53 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if postButton === sender {
-            //Set up date and time formats
-            let formatter = NSDateFormatter()
-            formatter.dateStyle = NSDateFormatterStyle.ShortStyle
-            formatter.timeStyle = NSDateFormatterStyle.ShortStyle
-            
-            //constants to grab data from fields
-            let name = eventTitle.text ?? ""
-            let startDate = eventDateSelector.date
-            let description = eventDescription.text ?? ""
-            let formattedStartDate = formatter.stringFromDate(startDate)
-            let UDIDset = UIDevice.currentDevice().identifierForVendor!.UUIDString
-            
-            //current time for record creation timestamp
-            let currentDateTime = NSDate()
-            let creationTimestamp = formatter.stringFromDate(currentDateTime)
-            
-            //rando number get
-            
-            let unsignedArrayCount = UInt32(10000000)
-            let unsignedRandomNumber = arc4random_uniform(unsignedArrayCount)
-            let randomNumber = Int(unsignedRandomNumber)
+            if editFlag == false {
+                //Set up date and time formats
+                let formatter = NSDateFormatter()
+                formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+                formatter.timeStyle = NSDateFormatterStyle.ShortStyle
+                
+                //constants to grab data from fields
+                let name = eventTitle.text ?? ""
+                let startDate = eventDateSelector.date
+                let description = eventDescription.text ?? ""
+                let formattedStartDate = formatter.stringFromDate(startDate)
+                let UDIDset = UIDevice.currentDevice().identifierForVendor!.UUIDString.uppercaseString
+                
+                //current time for record creation timestamp
+                let currentDateTime = NSDate()
+                let creationTimestamp = formatter.stringFromDate(currentDateTime)
+                
+                //rando number get
+                
+                let unsignedArrayCount = UInt32(10000000)
+                let unsignedRandomNumber = arc4random_uniform(unsignedArrayCount)
+                let randomNumber = Int(unsignedRandomNumber)
 
-            
-            //creates new event dict
-            newEvent = ["id": String(randomNumber), "eventName": name, "description": description, "startDate": String(formattedStartDate), "UDID": UDIDset, "eventTimestamp": String(creationTimestamp), "eventStatus": "\(EventStatus.Active)"/*, "location" : ["latitude" : 123.123, "longitude": 123.456]*/]
-            //makes api call
-            Alamofire.request(.POST, "https://ebox86-test.apigee.net/anonyvent/event", parameters: newEvent, encoding: .JSON)
+                
+                //creates new event dict
+                eventRequest = ["id": String(randomNumber), "eventName": name, "description": description, "startDate": String(formattedStartDate), "udid": UDIDset, "eventTimestamp": String(creationTimestamp), "eventStatus": "\(EventStatus.Active)"/*, "location" : ["latitude" : 123.123, "longitude": 123.456]*/]
+                //makes api call
+                Alamofire.request(.POST, "https://ebox86-test.apigee.net/anonyvent/event", parameters: eventRequest, encoding: .JSON)
+            } else {
+                //Set up date and time formats
+                let formatter = NSDateFormatter()
+                formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+                formatter.timeStyle = NSDateFormatterStyle.ShortStyle
+                
+                let updatedTitle = eventTitle.text
+                let updatedDescrip = eventDescription.text
+                let startDate = eventDateSelector.date
+                let formattedStartDate = formatter.stringFromDate(startDate)
+                
+                //current time to record modification timestamp
+                let currentDateTime = NSDate()
+                let modifiedTimestamp = formatter.stringFromDate(currentDateTime)
+                //builds updated posts in new event dict and posts to apigee
+                eventRequest = ["id": postId!, "eventName": updatedTitle!, "description": updatedDescrip, "startDate": String(formattedStartDate), "udid": udid!, "eventTimestamp": eventCreatedTimestamp!, "eventLastModified": modifiedTimestamp, "eventStatus": eventStatus!, /*"location" : ["latitude" : 123.123, "longitude": 123.456]*/ "uuid":uuid!]
+                //makes api call
+                Alamofire.request(.POST, "https://ebox86-test.apigee.net/anonyvent/event", parameters: eventRequest, encoding: .JSON)
+            }
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

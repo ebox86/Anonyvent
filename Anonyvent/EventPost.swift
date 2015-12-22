@@ -18,6 +18,7 @@ enum EventPostFields: String {
     case EventStatus = "eventStatus"
     case EventName = "eventName"
     case Id = "id"
+    case PostId = "postId"
     case EventTimestamp = "eventTimestamp"
     case UDID = "udid"
     case UUID = "uuid"
@@ -41,6 +42,7 @@ class EventWrapper {
 
 class EventPost {
     var id : Int?
+    var postId : Int?
     var startDate : String?
     var location : String?
     var description : String?
@@ -53,6 +55,7 @@ class EventPost {
     required init(json: JSON, id: Int?) {
         print(json)
         self.id = id
+        self.postId = json[EventPostFields.Id.rawValue].intValue
         self.eventName = json[EventPostFields.EventName.rawValue].stringValue
         self.startDate = json[EventPostFields.StartDate.rawValue].stringValue
      //   self.location = json[EventPostFields.Location.rawValue].stringValue
