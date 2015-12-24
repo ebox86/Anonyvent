@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import QuartzCore
+import BRYXBanner
 
 class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate {
     
@@ -34,6 +35,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     var eventStatus : String?
     var editTitle : String?
     var editDescrip : String?
+    let banner = Banner(title: "Success", subtitle: "Event Updated Successfully", image: UIImage(named: "Icon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,10 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         eventTitle.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0)
         eventTitle.attributedPlaceholder = NSAttributedString(string:"Event Title",
             attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
+        
+        //config for banner
+        banner.dismissesOnTap = true
+        
         if editFlag == true {
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
@@ -268,6 +274,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
                 eventRequest = ["id": postId!, "eventName": updatedTitle!, "description": updatedDescrip, "startDate": String(formattedStartDate), "udid": udid!, "eventTimestamp": eventCreatedTimestamp!, "eventLastModified": modifiedTimestamp, "eventStatus": eventStatus!, /*"location" : ["latitude" : 123.123, "longitude": 123.456]*/ "uuid":uuid!]
                 //makes api call
                 Alamofire.request(.POST, "https://ebox86-test.apigee.net/anonyvent/event", parameters: eventRequest, encoding: .JSON)
+                banner.show(duration: 2.0)
             }
         }
         // Get the new view controller using segue.destinationViewController.

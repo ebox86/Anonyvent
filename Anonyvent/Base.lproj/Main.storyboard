@@ -112,7 +112,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="BpR-XR-tMC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="BpR-XR-tMC">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.8389423077" green="0.8389423077" blue="0.8389423077" alpha="1" colorSpace="calibratedRGB"/>
@@ -122,7 +122,7 @@
                                         <rect key="frame" x="0.0" y="65" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s3c-q4-6Hx" id="WJE-Nx-0tM">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uP1-rQ-zsO">
@@ -149,7 +149,7 @@
                                                     <color key="textColor" red="0.40226362179487174" green="0.40226362179487174" blue="0.40226362179487174" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="detailTextLabel" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OW8-fT-uTb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="detailTextLabel" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OW8-fT-uTb">
                                                     <rect key="frame" x="16" y="49" width="567" height="50"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -161,7 +161,7 @@
                                                 <constraint firstItem="UNW-uW-nGj" firstAttribute="top" secondItem="uP1-rQ-zsO" secondAttribute="bottom" constant="2" id="9mJ-gS-ujX"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="UNW-uW-nGj" secondAttribute="bottom" constant="13" id="Aiw-Ji-iIF"/>
                                                 <constraint firstItem="OW8-fT-uTb" firstAttribute="top" secondItem="uP1-rQ-zsO" secondAttribute="bottom" constant="11" id="DST-Nf-Pz3"/>
-                                                <constraint firstAttribute="bottom" secondItem="OW8-fT-uTb" secondAttribute="bottom" id="Jqn-ev-V5Y"/>
+                                                <constraint firstAttribute="bottom" secondItem="OW8-fT-uTb" secondAttribute="bottom" constant="1" id="Jqn-ev-V5Y"/>
                                                 <constraint firstItem="uP1-rQ-zsO" firstAttribute="top" secondItem="WJE-Nx-0tM" secondAttribute="topMargin" constant="-3" id="Ne4-Rb-kzY"/>
                                                 <constraint firstItem="OW8-fT-uTb" firstAttribute="centerX" secondItem="WJE-Nx-0tM" secondAttribute="centerX" id="SfT-dp-JMF"/>
                                                 <constraint firstItem="OW8-fT-uTb" firstAttribute="leading" secondItem="UNW-uW-nGj" secondAttribute="leading" id="YGM-o0-5Px"/>
@@ -235,7 +235,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eventName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVt-XU-dan">
                                 <rect key="frame" x="20" y="90" width="560" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

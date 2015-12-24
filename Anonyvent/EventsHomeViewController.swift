@@ -29,7 +29,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBAction func unwindActionFromCreateEvent(segue: UIStoryboardSegue) {
         events?.removeAll()
-        loadFirstEvents()
+        loadEvents()
         self.eventsTableViewNew2?.reloadData()
     }
     @IBAction func unwindActionFromCancel(segue: UIStoryboardSegue) {}
@@ -64,15 +64,15 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.eventsTableViewNew2?.addSubview(refreshControl)
         events?.removeAll()
-        self.loadFirstEvents()
+        self.loadEvents()
     }
     
     func refresh(sender:AnyObject) {
         events?.removeAll()
-        self.loadFirstEvents()
+        self.loadEvents()
     }
     
-    func loadFirstEvents()
+    func loadEvents()
     {
         isLoadingEvents = true
         EventPost.getEvents { wrapper, error in
@@ -102,42 +102,6 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
    
-    func loadMoreEvents()
-    {
-        self.isLoadingEvents = true
-        if self.events != nil && self.eventsWrapper != nil && self.events!.count < self.eventsWrapper!.count
-        {
-            print("test")
-            // there are more events out there!
-            EventPost.getEvents { wrapper, error in
-                if let error = error
-                {
-                    // TODO: improved error handling
-                    self.isLoadingEvents = false
-                    let alert = UIAlertController(title: "Uh Oh", message: "Could not load more events. \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                }
-                print("got more!")
-                self.addEventsFromWrapper(wrapper)
-                self.isLoadingEvents = false
-                
-                // update "last updated" title for refresh control
-                let now = NSDate()
-                let updateString = "Last Updated at " + self.formatter.stringFromDate(now)
-                self.refreshControl.attributedTitle = NSAttributedString(string: updateString)
-                
-                // tell refresh control it can stop showing up now
-                if self.refreshControl.refreshing
-                {
-                    self.refreshControl.endRefreshing()
-                }
-                
-                self.eventsTableViewNew2?.reloadData()
-            }
-        }
-    }
-
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         print("locations = \(locValue.latitude) \(locValue.longitude)")
@@ -178,11 +142,27 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         if self.events != nil && self.events!.count >= indexPath.row
         {
             let events = self.events![indexPath.row]
+            
             cell.titleLabel?.text = events.eventName
             cell.eventDetailLabel?.text = events.description
-            //cell.layer.borderWidth = 0.5
+            cell.layer.borderWidth = 0.25
             cell.layer.borderColor = UIColor.lightGrayColor().CGColor
             cell.eventDateLabel?.text = events.startDate
+            
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            
+            //let whiteRoundedView : UIView = UIView(frame: CGRectMake(0, 5, self.view.frame.size.width - 10, 90))
+            
+            //let shadowPath = UIBezierPath(rect: whiteRoundedView.bounds)
+            //whiteRoundedView.layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 1.0, 1.0, 1.0])
+            //whiteRoundedView.layer.masksToBounds = false
+            //whiteRoundedView.layer.cornerRadius = 0.5
+            //whiteRoundedView.layer.shadowOffset = CGSizeMake(-1, 1)
+            //whiteRoundedView.layer.shadowOpacity = 0.2
+            //whiteRoundedView.layer.shadowPath = shadowPath.CGPath
+            
+            //ell.contentView.addSubview(whiteRoundedView)
+            //cell.contentView.sendSubviewToBack(whiteRoundedView)
             
             // See if we need to load more events
             let rowsToLoadFromBottom = 5;
@@ -193,10 +173,6 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             {
                 let totalRows = self.eventsWrapper?.count
                 let remainingEventsToLoad: Int? = (totalRows! - rowsLoaded)
-                if (remainingEventsToLoad > 0)
-                {
-                    self.loadMoreEvents()
-                }
             }
             
         }
