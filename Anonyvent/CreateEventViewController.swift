@@ -85,6 +85,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
         }
         eventTitle.delegate = self
         eventDescription.delegate = self
+        self.mapView.delegate = self
         
         eventDescription.selectedTextRange = eventDescription.textRangeFromPosition(eventDescription.beginningOfDocument, toPosition: eventDescription.beginningOfDocument)
         
@@ -101,7 +102,16 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
             locationmgr.delegate = self
             locationmgr.desiredAccuracy = kCLLocationAccuracyBest
             locationmgr.requestAlwaysAuthorization()
-            //locationmgr.startUpdatingLocation()
+            locationmgr.stopUpdatingLocation()
+            var currentLocation = CLLocation!()
+            if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
+                CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
+                    
+                    currentLocation = locationmgr.location
+                    
+            }
+            let initialLocation = CLLocation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+            centerMapOnLocation(initialLocation)
         }
         
         let currentDate = NSDate()
@@ -118,15 +128,11 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
         checkValidEventName()
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
-        
-        let location = locations.last! as CLLocation
-        
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        
-        self.mapView.setRegion(region, animated: true)
+    let regionRadius: CLLocationDistance = 1000
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+            regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -184,6 +190,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
         }
         if (text == "\n") {
             eventDescription.resignFirstResponder()
+            
             return false
         }
         return true
