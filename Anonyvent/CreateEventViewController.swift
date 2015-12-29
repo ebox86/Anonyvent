@@ -11,8 +11,10 @@ import Alamofire
 import SwiftyJSON
 import QuartzCore
 import BRYXBanner
+import MapKit
+import CoreLocation
 
-class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate {
+class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate, MKMapViewDelegate, UITextViewDelegate, UINavigationControllerDelegate {
     
     
     @IBOutlet weak var eventTitle: UITextField!
@@ -22,8 +24,11 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var charCounter: UILabel!
     @IBOutlet weak var charCounter2: UILabel!
-    
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var deleteEventButton: UIButton!
+
     var keyboardDismissTapGesture: UIGestureRecognizer?
+
     var eventRequest = [String: AnyObject]()
     //var randoIcon = EventIcons.randomIcon
     var editFlag = false
@@ -35,7 +40,8 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     var eventStatus : String?
     var editTitle : String?
     var editDescrip : String?
-    let banner = Banner(title: "Success", subtitle: "Event Updated Successfully", image: UIImage(named: "Icon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+    var banner : Banner?
+    var locationmgr : CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +54,10 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         eventTitle.attributedPlaceholder = NSAttributedString(string:"Event Title",
             attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
         
-        //config for banner
-        banner.dismissesOnTap = true
+
+        
+        
+        deleteEventButton.hidden = true
         
         if editFlag == true {
             let dateFormatter = NSDateFormatter()
@@ -59,6 +67,11 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
             eventDateSelector.date = updatedDateFormatted!
             self.title = "Update Event"
             postButton.title = "Done"
+            //config for update banner
+            banner = Banner(title: "Success", subtitle: "Event Updated Successfully", image: UIImage(named: "Icon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+            banner!.dismissesOnTap = true
+            deleteEventButton.hidden = false
+            
         }
         //Handle the text fields user input through the delegate callbacks
         if(editFlag == true){
@@ -78,6 +91,22 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         self.view.addSubview(eventTitle!)
         self.view.addSubview(eventDescription!)
         
+        //locationmgr.requestWhenInUseAuthorization()
+        //locationmgr.requestAlwaysAuthorization()
+        mapView.showsUserLocation = true
+        //locationmgr.delegate = self
+        if (CLLocationManager.locationServicesEnabled())
+        {
+            locationmgr = CLLocationManager()
+            locationmgr.delegate = self
+            locationmgr.desiredAccuracy = kCLLocationAccuracyBest
+            locationmgr.requestAlwaysAuthorization()
+            //locationmgr.startUpdatingLocation()
+        }
+        
+        let currentDate = NSDate()
+        self.eventDateSelector.minimumDate = currentDate
+
         if(editFlag == true){
             self.eventTitle.text = editTitle
             self.eventDescription.text = editDescrip
@@ -87,6 +116,17 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         }
         // Enable the Post button only if the text field has a valid Event name
         checkValidEventName()
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        
+        let location = locations.last! as CLLocation
+        
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        self.mapView.setRegion(region, animated: true)
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -195,6 +235,24 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func deleteEventButton(sender: AnyObject) {
+    showAlertButtonTapped(deleteEventButton)
+    }
+    
+    @IBAction func showAlertButtonTapped(sender: UIButton){
+        
+        //create the alert
+        let alert = UIAlertController(title: "Delete Event", message: "Are you sure you want to delete this event?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        //add action buttons
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive, handler: {action in
+            self.deleteEventFunc()
+            self.performSegueWithIdentifier("deleteSegue", sender: self)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     
     //MARK - UITextFieldDelegate
     
@@ -222,6 +280,15 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     func checkValidEventName() {
         let text = eventTitle.text ?? ""
         postButton.enabled = !text.isEmpty
+    }
+    
+    func deleteEventFunc(){
+        banner = Banner(title: "Success", subtitle: "Event Deleted Successfully", image: UIImage(named: "Icon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+        banner!.dismissesOnTap = true
+        //makes api call
+        Alamofire.request(.DELETE, "https://ebox86-test.apigee.net/anonyvent/deleteEvent/\(uuid!)", parameters: nil, encoding: .JSON)
+        banner!.show(duration: 1.5)
+        
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -274,7 +341,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
                 eventRequest = ["id": postId!, "eventName": updatedTitle!, "description": updatedDescrip, "startDate": String(formattedStartDate), "udid": udid!, "eventTimestamp": eventCreatedTimestamp!, "eventLastModified": modifiedTimestamp, "eventStatus": eventStatus!, /*"location" : ["latitude" : 123.123, "longitude": 123.456]*/ "uuid":uuid!]
                 //makes api call
                 Alamofire.request(.POST, "https://ebox86-test.apigee.net/anonyvent/event", parameters: eventRequest, encoding: .JSON)
-                banner.show(duration: 2.0)
+                banner!.show(duration: 1.5)
             }
         }
         // Get the new view controller using segue.destinationViewController.

@@ -34,6 +34,8 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     }
     @IBAction func unwindActionFromCancel(segue: UIStoryboardSegue) {}
     
+    @IBAction func deleteUnwind(segue:UIStoryboardSegue){}
+    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
