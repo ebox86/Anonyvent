@@ -15,6 +15,8 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventDescriptionLabel: UITextView!
     @IBOutlet weak var lastModified: UILabel!
+    @IBOutlet weak var openMapButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
 
 
     var eventTitle : String!
@@ -24,8 +26,8 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
     var uuid : String!
     var eventStatus : String?
     var postId : Int?
-    var eventCreatedTimestamp : String?
-    var eventLastModified : String?
+    var created : String?
+    var modified : String?
     
     let currentDeviceUDID = UIDevice.currentDevice().identifierForVendor!.UUIDString
     
@@ -36,9 +38,13 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.openMapButton.backgroundColor = UIColor.lightGrayColor()
+        self.openMapButton.tintColor = UIColor.whiteColor()
+        
         self.eventTitleLabel.text = eventTitle
         self.eventDescriptionLabel.text = eventDescription
         self.eventStartDateLabel.text = eventStartDate
+        self.eventTitleLabel.numberOfLines = 2
         print("\(currentDeviceUDID) - current")
         print(authorUDID)
         editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "buttonAction")
@@ -64,7 +70,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
         //current time for record creation timestamp
         let currentDateTime = NSDate()
         */
-        if (eventLastModified != "") {
+        if (modified != created) {
             /*
             print(eventLastModified!)
             let date1 = currentDateTime
@@ -73,7 +79,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
             let compareTimestamps = date1.compare(date2!)
             let interval : NSTimeInterval = date1.timeIntervalSinceDate(date2!)
             */
-            lastModified.text = "last modified \(eventLastModified!)"
+            lastModified.text = "last modified \(modified!)"
         } else {
             lastModified.text = ""
         }
@@ -112,7 +118,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
             viewController.udid = authorUDID
             viewController.uuid = uuid
             viewController.eventStatus = eventStatus
-            viewController.eventCreatedTimestamp = eventCreatedTimestamp
+            viewController.eventCreatedTimestamp = created
             viewController.postId = postId
             viewController.editFlag = true
         }

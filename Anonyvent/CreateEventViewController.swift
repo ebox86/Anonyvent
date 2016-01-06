@@ -42,6 +42,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
     var editDescrip : String?
     var banner : Banner?
     var locationmgr : CLLocationManager!
+    let apikey = "26kCJ32CVlb4R5qBH1wEHBEK5GgPABX8"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +72,8 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
             banner = Banner(title: "Success", subtitle: "Event Updated Successfully", image: UIImage(named: "Icon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
             banner!.dismissesOnTap = true
             deleteEventButton.hidden = false
+            deleteEventButton.tintColor = UIColor.whiteColor()
+            deleteEventButton.backgroundColor = UIColor.lightGrayColor()
             
         }
         //Handle the text fields user input through the delegate callbacks
@@ -85,7 +88,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
         }
         eventTitle.delegate = self
         eventDescription.delegate = self
-        self.mapView.delegate = self
+        mapView.delegate = self
         
         eventDescription.selectedTextRange = eventDescription.textRangeFromPosition(eventDescription.beginningOfDocument, toPosition: eventDescription.beginningOfDocument)
         
@@ -110,6 +113,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
                     currentLocation = locationmgr.location
                     
             }
+            addRadiusCircle(currentLocation)
             let initialLocation = CLLocation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
             centerMapOnLocation(initialLocation)
         }
@@ -128,11 +132,49 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
         checkValidEventName()
     }
     
-    let regionRadius: CLLocationDistance = 1000
+    let regionRadius: CLLocationDistance = 2500
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
             regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func addRadiusCircle(location: CLLocation){
+        self.mapView.delegate = self
+        var circle = MKCircle(centerCoordinate: location.coordinate, radius: 2440 as CLLocationDistance)
+        self.mapView.addOverlay(circle)
+    }
+    
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        if overlay is MKCircle {
+            var circle = MKCircleRenderer(overlay: overlay)
+            circle.strokeColor = UIColor.blueColor()
+            circle.fillColor = UIColor(red: 0, green: 0, blue: 255, alpha: 0.1)
+            circle.lineWidth = 1
+            return circle
+        } else {
+            return nil
+        }
+    }
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        
+        let identifier = "User"
+        
+        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+        
+        if annotationView == nil{
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+            
+        } else {
+            annotationView!.annotation = annotation
+        }
+        
+        annotationView!.image = UIImage(named: "pin")
+        
+        return annotationView
+        
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -243,7 +285,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
     }
     
     @IBAction func deleteEventButton(sender: AnyObject) {
-    showAlertButtonTapped(deleteEventButton)
+        showAlertButtonTapped(deleteEventButton)
     }
     
     @IBAction func showAlertButtonTapped(sender: UIButton){
@@ -293,7 +335,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
         banner = Banner(title: "Success", subtitle: "Event Deleted Successfully", image: UIImage(named: "Icon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
         banner!.dismissesOnTap = true
         //makes api call
-        Alamofire.request(.DELETE, "https://ebox86-test.apigee.net/anonyvent/deleteEvent/\(uuid!)", parameters: nil, encoding: .JSON)
+        Alamofire.request(.DELETE, "https://ebox86-test.apigee.net/anonyvent/deleteEvent/\(uuid!)?apikey=\(apikey)", parameters: nil, encoding: .JSON)
         banner!.show(duration: 1.5)
         
     }
@@ -315,10 +357,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
                 let formattedStartDate = formatter.stringFromDate(startDate)
                 let UDIDset = UIDevice.currentDevice().identifierForVendor!.UUIDString.uppercaseString
                 
-                //current time for record creation timestamp
-                let currentDateTime = NSDate()
-                let creationTimestamp = formatter.stringFromDate(currentDateTime)
-                
                 //rando number get
                 
                 let unsignedArrayCount = UInt32(10000000)
@@ -327,9 +365,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
 
                 
                 //creates new event dict
-                eventRequest = ["id": String(randomNumber), "eventName": name, "description": description, "startDate": String(formattedStartDate), "udid": UDIDset, "eventTimestamp": String(creationTimestamp), "eventStatus": "\(EventStatus.Active)"/*, "location" : ["latitude" : 123.123, "longitude": 123.456]*/]
+                eventRequest = ["id": String(randomNumber), "eventName": name, "description": description, "startDate": String(formattedStartDate), "udid": UDIDset, "eventStatus": "\(EventStatus.Active)"/*, "location" : ["latitude" : 123.123, "longitude": 123.456]*/]
                 //makes api call
-                Alamofire.request(.POST, "https://ebox86-test.apigee.net/anonyvent/event", parameters: eventRequest, encoding: .JSON)
+                Alamofire.request(.POST, "https://ebox86-test.apigee.net/anonyvent/event?apikey=\(apikey)", parameters: eventRequest, encoding: .JSON)
             } else {
                 //Set up date and time formats
                 let formatter = NSDateFormatter()
@@ -341,13 +379,10 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
                 let startDate = eventDateSelector.date
                 let formattedStartDate = formatter.stringFromDate(startDate)
                 
-                //current time to record modification timestamp
-                let currentDateTime = NSDate()
-                let modifiedTimestamp = formatter.stringFromDate(currentDateTime)
                 //builds updated posts in new event dict and posts to apigee
-                eventRequest = ["id": postId!, "eventName": updatedTitle!, "description": updatedDescrip, "startDate": String(formattedStartDate), "udid": udid!, "eventTimestamp": eventCreatedTimestamp!, "eventLastModified": modifiedTimestamp, "eventStatus": eventStatus!, /*"location" : ["latitude" : 123.123, "longitude": 123.456]*/ "uuid":uuid!]
+                eventRequest = ["id": postId!, "eventName": updatedTitle!, "description": updatedDescrip, "startDate": String(formattedStartDate), "udid": udid!, "eventStatus": eventStatus!, /*"location" : ["latitude" : 123.123, "longitude": 123.456]*/ "uuid":uuid!]
                 //makes api call
-                Alamofire.request(.POST, "https://ebox86-test.apigee.net/anonyvent/event", parameters: eventRequest, encoding: .JSON)
+                Alamofire.request(.POST, "https://ebox86-test.apigee.net/anonyvent/event?apikey=\(apikey)", parameters: eventRequest, encoding: .JSON)
                 banner!.show(duration: 1.5)
             }
         }

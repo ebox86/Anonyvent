@@ -19,7 +19,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>EZSwipeController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Anonyvent.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftLocation-SwiftLocation.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftLocation.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,7 +47,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>34A9638EF5EBB959F0B8A5A5C2FDE6C1</key>
+		<key>304B8AA9DE85EFE482642DC59EF32749</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3229C7281B11B74693CE47CA7DBD9B86</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,12 +62,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5A205B33EAE719F44904077C86BE19B2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>72252E535535A4CB3AE9DCB87BF6240F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>75AEEEFD7E431013E8E60009251D5797</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B6D5AA6FF4C033D97DAF9C8C37FE88F0</key>
+		<key>D168A90FC275B7C8B0DDF59974BBE8BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

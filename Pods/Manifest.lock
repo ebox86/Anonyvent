@@ -1,16 +1,22 @@
 PODS:
   - Alamofire (3.1.4)
   - BRYXBanner (0.5.0)
+  - EZSwipeController (0.4)
+  - SwiftLocation (0.2.0)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.1)
   - BRYXBanner (~> 0.5)
+  - EZSwipeController (~> 0.4)
+  - SwiftLocation (~> 0.2)
   - SwiftyJSON (~> 2.3)
 
 SPEC CHECKSUMS:
   Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
   BRYXBanner: a1b87cd80ae9c366af5755b5ea2978802aaff87a
+  EZSwipeController: 49aa0f869e66049ac433483120f458434272ee32
+  SwiftLocation: ea78ae4a822581bde7379d98c8513273723c8840
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

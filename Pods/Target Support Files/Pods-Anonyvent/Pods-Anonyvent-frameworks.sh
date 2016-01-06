@@ -86,10 +86,14 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Anonyvent/Alamofire.framework"
   install_framework "Pods-Anonyvent/BRYXBanner.framework"
+  install_framework "Pods-Anonyvent/EZSwipeController.framework"
+  install_framework "Pods-Anonyvent/SwiftLocation.framework"
   install_framework "Pods-Anonyvent/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Anonyvent/Alamofire.framework"
   install_framework "Pods-Anonyvent/BRYXBanner.framework"
+  install_framework "Pods-Anonyvent/EZSwipeController.framework"
+  install_framework "Pods-Anonyvent/SwiftLocation.framework"
   install_framework "Pods-Anonyvent/SwiftyJSON.framework"
 fi

@@ -19,10 +19,10 @@ enum EventPostFields: String {
     case EventName = "eventName"
     case Id = "id"
     case PostId = "postId"
-    case EventTimestamp = "eventTimestamp"
+    case Created = "created"
     case UDID = "udid"
     case UUID = "uuid"
-    case EventLastModified = "eventLastModified"
+    case Modified = "modified"
 }
 
 enum EventStatus: String {
@@ -49,10 +49,10 @@ class EventPost {
     var description : String?
     var eventStatus : String?
     var eventName: String?
-    var eventTimestamp: String?
+    var created: String?
     var udid: String?
     var uuid: String?
-    var eventLastModified : String?
+    var modified : String?
     
     required init(json: JSON, id: Int?) {
         print(json)
@@ -63,14 +63,14 @@ class EventPost {
      //   self.location = json[EventPostFields.Location.rawValue].stringValue
         self.description = json[EventPostFields.Description.rawValue].stringValue
         self.eventStatus = json[EventPostFields.EventStatus.rawValue].stringValue
-        self.eventTimestamp = json[EventPostFields.EventTimestamp.rawValue].stringValue
+        self.created = json[EventPostFields.Created.rawValue].stringValue
         self.udid = json[EventPostFields.UDID.rawValue].stringValue
         self.uuid = json[EventPostFields.UUID.rawValue].stringValue
-        self.eventLastModified = json[EventPostFields.EventLastModified.rawValue].stringValue
+        self.modified = json[EventPostFields.Modified.rawValue].stringValue
     }
     
     class func endpointForApigee() -> String {
-        return "https://ebox86-test.apigee.net/anonyvent/events"
+        return "https://ebox86-test.apigee.net/anonyvent/"
     }
     
     private class func getEventAtPath(path: String, completionHandler: (EventWrapper?, NSError?) -> Void){
@@ -86,7 +86,8 @@ class EventPost {
     }
     
     class func getEvents(completionHandler: (EventWrapper?, NSError?) -> Void) {
-        getEventAtPath(EventPost.endpointForApigee(), completionHandler: completionHandler)
+        let apikey = "26kCJ32CVlb4R5qBH1wEHBEK5GgPABX8"
+        getEventAtPath("\(EventPost.endpointForApigee())events?apikey=\(apikey)", completionHandler: completionHandler)
     }
     /*
     class func getMoreEvents(wrapper: EventWrapper?, completionHandler: (EventWrapper?, NSError?) -> Void) {

@@ -146,7 +146,8 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             let events = self.events![indexPath.row]
             
             cell.titleLabel?.text = events.eventName
-            cell.eventDetailLabel?.text = events.description
+            cell.titleLabel?.numberOfLines = 2
+            //cell.eventDetailLabel?.text = events.description
             cell.layer.borderWidth = 0.25
             cell.layer.borderColor = UIColor.lightGrayColor().CGColor
             cell.eventDateLabel?.text = events.startDate
@@ -204,8 +205,9 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             viewController.uuid = viewEvents.uuid
             viewController.eventStatus = viewEvents.eventStatus
             viewController.postId = viewEvents.postId
-            viewController.eventCreatedTimestamp = viewEvents.eventTimestamp
-            viewController.eventLastModified = viewEvents.eventLastModified
+            viewController.created = viewEvents.created
+            viewController.modified = viewEvents.modified
+            viewController.hidesBottomBarWhenPushed = true
         }
     }
     
