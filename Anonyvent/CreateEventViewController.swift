@@ -294,7 +294,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, CLLocati
         let alert = UIAlertController(title: "Delete Event", message: "Are you sure you want to delete this event?", preferredStyle: UIAlertControllerStyle.Alert)
         
         //add action buttons
-        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive, handler: {action in
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.Default, handler: {action in
             self.deleteEventFunc()
             self.performSegueWithIdentifier("deleteSegue", sender: self)
         }))

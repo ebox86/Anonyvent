@@ -11,6 +11,7 @@ import EZSwipeController
 
 class HomeSwipeViewController: EZSwipeController {
     override func setupView() {
+        navigationBarShouldNotExist = false
         datasource = self
     }
     
@@ -22,15 +23,23 @@ class HomeSwipeViewController: EZSwipeController {
 
 extension HomeSwipeViewController: EZSwipeControllerDataSource {
     func viewControllerData() -> [UIViewController] {
-        let redVC = UIViewController()
-        redVC.view.backgroundColor = UIColor.redColor()
+        let eventsHomevc : UIViewController! = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("eventsHome") as UIViewController
+        self.presentViewController(eventsHomevc, animated: false, completion: nil)
         
-        let blueVC = UIViewController()
-        blueVC.view.backgroundColor = UIColor.blueColor()
+        let mapHomevc : UIViewController! = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("mapView") as UIViewController
+        self.presentViewController(eventsHomevc, animated: false, completion: nil)
         
-        let greenVC = UIViewController()
-        greenVC.view.backgroundColor = UIColor.greenColor()
+        let myEvents : UIViewController! = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("myEvents") as UIViewController
+        self.presentViewController(myEvents, animated: false, completion: nil)
         
-        return [redVC, blueVC, greenVC]
+        return [eventsHomevc, mapHomevc, myEvents]
+    }
+    
+    func titlesForPages() -> [String] {
+        return ["Events", "Map", "Settings"]
+    }
+    
+    func indexOfStartingPage() -> Int {
+        return 1 // EZSwipeController starts from 2nd, green page
     }
 }

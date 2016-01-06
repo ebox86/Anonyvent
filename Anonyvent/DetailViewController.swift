@@ -17,6 +17,8 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
     @IBOutlet weak var lastModified: UILabel!
     @IBOutlet weak var openMapButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backButton: UIBarButtonItem!
+
 
 
     var eventTitle : String!
@@ -47,7 +49,8 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
         self.eventTitleLabel.numberOfLines = 2
         print("\(currentDeviceUDID) - current")
         print(authorUDID)
-        editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "buttonAction")
+        editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "editButtonAction")
+        //backButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "backButtonAction")
         if (authorUDID == currentDeviceUDID) {
             print("I AM OWNER!")
             navigationItem.rightBarButtonItems = [editButton]
@@ -102,10 +105,15 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
         // Dispose of any resources that can be recreated.
     }
     
-    func buttonAction(){
+    func editButtonAction(){
         self.performSegueWithIdentifier("editEventSegue", sender: editButton)
     }
     
+    @IBAction func backButtonAction(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
+        
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

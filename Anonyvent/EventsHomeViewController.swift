@@ -14,7 +14,9 @@ import CoreLocation
 import MapKit
 
 class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
+    //@IBOutlet weak var createPost: UIBarButtonItem!
     @IBOutlet weak var createPost: UIBarButtonItem!
+    
     
     var refreshControl = UIRefreshControl()
     let formatter = NSDateFormatter()
@@ -45,8 +47,8 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         
         self.title = "SomeApp"
         
-        let navigationBar = navigationController!.navigationBar
-        navigationBar.tintColor = UIColor.blueColor()
+        //let navigationBar = navigationController!.navigationBar
+        //navigationBar.tintColor = UIColor.blueColor()
         
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
@@ -195,7 +197,9 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "detailViewSegue")
         {
-            let viewController = segue.destinationViewController as! DetailViewController
+            //let viewController = segue.destinationViewController as! DetailViewController
+            let navVC = segue.destinationViewController as! UINavigationController
+            let viewController = navVC.topViewController as! DetailViewController
             let indexPath = eventsTableViewNew2!.indexPathForCell(sender as! UITableViewCell)
             let viewEvents = self.events![indexPath!.row]
             viewController.eventTitle = viewEvents.eventName

@@ -26,6 +26,7 @@
 		A6CB4FAE1BE6B6F10027DF25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CB4FAC1BE6B6F10027DF25 /* LaunchScreen.storyboard */; };
 		A6CB4FB91BE6B6F10027DF25 /* AnonyventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FB81BE6B6F10027DF25 /* AnonyventTests.swift */; };
 		A6CB4FC41BE6B6F10027DF25 /* AnonyventUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FC31BE6B6F10027DF25 /* AnonyventUITests.swift */; };
+		A6DCCC9B1C3D0FF600F28968 /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DCCC9A1C3D0FF600F28968 /* MainMapViewController.swift */; };
 		D8BE9D5283069FAD8A2EC05C /* Pods_Anonyvent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C456624A473CD9F79B074685 /* Pods_Anonyvent.framework */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +201,7 @@
 		A6CB4FBF1BE6B6F10027DF25 /* AnonyventUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnonyventUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CB4FC31BE6B6F10027DF25 /* AnonyventUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonyventUITests.swift; sourceTree = "<group>"; };
 		A6CB4FC51BE6B6F10027DF25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6DCCC9A1C3D0FF600F28968 /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		C456624A473CD9F79B074685 /* Pods_Anonyvent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Anonyvent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -305,6 +307,7 @@
 			children = (
 				A6CB4FA31BE6B6F10027DF25 /* AppDelegate.swift */,
 				A67429CC1C3CF7D900FE9A5F /* HomeSwipeViewController.swift */,
+				A6DCCC9A1C3D0FF600F28968 /* MainMapViewController.swift */,
 				5B891B8A1BFB3261000C2BDE /* EventsHomeViewController.swift */,
 				A67FFDCF1C2418BD001E21AC /* EventsTableViewCell.swift */,
 				A6A22ED11BF2C7EC00C9852B /* EventPost.swift */,
@@ -662,6 +665,7 @@
 				5B891B8D1BFB328E000C2BDE /* MyEventsViewController.swift in Sources */,
 				A6A22E0B1BEACD4300C9852B /* CreateEventViewController.swift in Sources */,
 				A64206CD1C22C4750048510F /* DetailViewController.swift in Sources */,
+				A6DCCC9B1C3D0FF600F28968 /* MainMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
