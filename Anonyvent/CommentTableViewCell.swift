@@ -10,6 +10,8 @@ import UIKit
 
 class CommentTableViewCell: UITableViewCell {
 
+
+    @IBOutlet weak var commentLabel: UILabel!
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

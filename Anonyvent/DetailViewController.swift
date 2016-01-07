@@ -8,14 +8,14 @@
 
 import UIKit
 
-class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigationControllerDelegate {
+class DetailViewController: UIViewController,  UITextFieldDelegate, UITableViewDelegate {
 
 
-    @IBOutlet weak var eventStartDateLabel: UILabel!
-    @IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var eventDescriptionLabel: UITextView!
-    @IBOutlet weak var lastModified: UILabel!
-    @IBOutlet weak var openMapButton: UIButton!
+//    @IBOutlet weak var eventStartDateLabel: UILabel!
+//    @IBOutlet weak var eventTitleLabel: UILabel!
+//    @IBOutlet weak var eventDescriptionLabel: UITextView!
+//    @IBOutlet weak var lastModified: UILabel!
+//    @IBOutlet weak var openMapButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
 
 
@@ -37,7 +37,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+/*
         self.openMapButton.backgroundColor = UIColor.lightGrayColor()
         self.openMapButton.tintColor = UIColor.whiteColor()
         
@@ -45,6 +45,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
         self.eventDescriptionLabel.text = eventDescription
         self.eventStartDateLabel.text = eventStartDate
         self.eventTitleLabel.numberOfLines = 2
+*/
         print("\(currentDeviceUDID) - current")
         print(authorUDID)
         editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "buttonAction")
@@ -70,19 +71,6 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
         //current time for record creation timestamp
         let currentDateTime = NSDate()
         */
-        if (modified != created) {
-            /*
-            print(eventLastModified!)
-            let date1 = currentDateTime
-            let date2 = formatter.dateFromString(eventLastModified!)
-            
-            let compareTimestamps = date1.compare(date2!)
-            let interval : NSTimeInterval = date1.timeIntervalSinceDate(date2!)
-            */
-            lastModified.text = "last modified \(modified!)"
-        } else {
-            lastModified.text = ""
-        }
         // Do any additional setup after loading the view.
         
     }
@@ -104,6 +92,39 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
     
     func buttonAction(){
         self.performSegueWithIdentifier("editEventSegue", sender: editButton)
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.row == 0 || indexPath.row == 1{
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("section1", forIndexPath: indexPath) as! EventsDetailTableViewCell
+            self.tableView.rowHeight = 500
+            cell.eventNameLabel.text = eventTitle
+            print(eventTitle)
+            cell.eventDescription.text = eventDescription
+            if (modified != created) {
+                /*
+                print(eventLastModified!)
+                let date1 = currentDateTime
+                let date2 = formatter.dateFromString(eventLastModified!)
+                
+                let compareTimestamps = date1.compare(date2!)
+                let interval : NSTimeInterval = date1.timeIntervalSinceDate(date2!)
+                */
+                cell.lastModifiedLabel.text = "last modified \(modified!)"
+            } else {
+                cell.lastModifiedLabel.text = ""
+            }
+
+            return cell
+            
+        } else {
+            
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("section2", forIndexPath: indexPath) as! CommentTableViewCell
+            self.tableView.rowHeight = 60
+            cell.commentLabel.text = "Static Test Comment"
+            return cell
+        }
+        
     }
     
     // MARK: - Navigation
