@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController,  UITextFieldDelegate, UITableViewDelegate {
+class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
 
 
 //    @IBOutlet weak var eventStartDateLabel: UILabel!
@@ -33,6 +33,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UITableViewD
     
     var editButton: UIBarButtonItem!
     var ownerFlag = false
+    var segment = 0
     
     
     override func viewDidLoad() {
@@ -48,6 +49,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UITableViewD
 */
         print("\(currentDeviceUDID) - current")
         print(authorUDID)
+        tableView.delegate = self
         editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "buttonAction")
         if (authorUDID == currentDeviceUDID) {
             print("I AM OWNER!")
@@ -94,13 +96,42 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UITableViewD
         self.performSegueWithIdentifier("editEventSegue", sender: editButton)
     }
     
+    //func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    //    return 1
+    //}
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func segmentAction(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            segment = 0
+        case 1:
+            segment = 1
+        default:
+            break
+        }
+        tableView.reloadData()
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.row == 0 || indexPath.row == 1{
-            let cell = self.tableView.dequeueReusableCellWithIdentifier("section1", forIndexPath: indexPath) as! EventsDetailTableViewCell
-            self.tableView.rowHeight = 500
+        var cell: UITableViewCell!
+        if indexPath.row == 0 {
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("section1Cell", forIndexPath: indexPath) as! EventsDetailTableViewCell
+            self.tableView.rowHeight = 200
             cell.eventNameLabel.text = eventTitle
-            print(eventTitle)
             cell.eventDescription.text = eventDescription
+            cell.startDateLabel.text = eventStartDate
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            let segmentControl = cell.viewWithTag(1) as! UISegmentedControl
+            segmentControl.selectedSegmentIndex = segment
+            segmentControl.addTarget(self, action: "segmentAction:", forControlEvents: .ValueChanged)
             if (modified != created) {
                 /*
                 print(eventLastModified!)
@@ -114,17 +145,27 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UITableViewD
             } else {
                 cell.lastModifiedLabel.text = ""
             }
-
             return cell
-            
         } else {
-            
-            let cell = self.tableView.dequeueReusableCellWithIdentifier("section2", forIndexPath: indexPath) as! CommentTableViewCell
-            self.tableView.rowHeight = 60
-            cell.commentLabel.text = "Static Test Comment"
-            return cell
+            switch segment {
+            case 0:
+                let cell = self.tableView.dequeueReusableCellWithIdentifier:forIndexPath:("section2Cell", forIndexPath: indexPath) as! CommentTableViewCell
+                self.tableView.rowHeight = 60
+                cell.commentLabel.text = "Static Test Comment"
+                cell.backgroundColor = UIColor.redColor()
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
+                return cell
+            case 1:
+                let cell = self.tableView.dequeueReusableCellWithIdentifier:forIndexPath:("section3Cell", forIndexPath: indexPath) as! MapTableViewCell
+                self.tableView.rowHeight = 500
+                cell.backgroundColor = UIColor.greenColor()
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
+                return cell
+            default:
+                break
+            }
         }
-        
+        return cell
     }
     
     // MARK: - Navigation

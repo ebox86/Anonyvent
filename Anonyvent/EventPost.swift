@@ -23,6 +23,7 @@ enum EventPostFields: String {
     case UDID = "udid"
     case UUID = "uuid"
     case Modified = "modified"
+    case Comments = "comments"
 }
 
 enum EventStatus: String {
@@ -53,6 +54,7 @@ class EventPost {
     var udid: String?
     var uuid: String?
     var modified : String?
+    var comments : AnyObject?
     
     required init(json: JSON, id: Int?) {
         print(json)
@@ -67,6 +69,7 @@ class EventPost {
         self.udid = json[EventPostFields.UDID.rawValue].stringValue
         self.uuid = json[EventPostFields.UUID.rawValue].stringValue
         self.modified = json[EventPostFields.Modified.rawValue].stringValue
+        self.comments = json[EventPostFields.Comments.rawValue].arrayObject
     }
     
     class func endpointForApigee() -> String {

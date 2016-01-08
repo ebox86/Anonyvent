@@ -47,6 +47,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         
         let navigationBar = navigationController!.navigationBar
         navigationBar.tintColor = UIColor.blueColor()
+        navigationBar.backgroundColor = UIColor.lightGrayColor()
         
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()

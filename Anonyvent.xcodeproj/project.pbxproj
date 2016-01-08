@@ -11,7 +11,6 @@
 		5B891B8B1BFB3261000C2BDE /* EventsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B891B8A1BFB3261000C2BDE /* EventsHomeViewController.swift */; };
 		5B891B8D1BFB328E000C2BDE /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B891B8C1BFB328E000C2BDE /* MyEventsViewController.swift */; };
 		A64206CD1C22C4750048510F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64206CC1C22C4750048510F /* DetailViewController.swift */; };
-		A67429CD1C3CF7D900FE9A5F /* HomeSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67429CC1C3CF7D900FE9A5F /* HomeSwipeViewController.swift */; };
 		A67FFDD01C2418BD001E21AC /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FFDCF1C2418BD001E21AC /* EventsTableViewCell.swift */; };
 		A69027C41C3B7DB0009B73C4 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69027C31C3B7DAF009B73C4 /* CommentTableViewCell.swift */; };
 		A6A22E0B1BEACD4300C9852B /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */; };
@@ -21,12 +20,13 @@
 		A6A22ECA1BF15FB700C9852B /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6A22EBB1BF15F7300C9852B /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6A22ED21BF2C7EC00C9852B /* EventPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A22ED11BF2C7EC00C9852B /* EventPost.swift */; };
 		A6CB4FA41BE6B6F10027DF25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FA31BE6B6F10027DF25 /* AppDelegate.swift */; };
-		A6CB4FA91BE6B6F10027DF25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CB4FA71BE6B6F10027DF25 /* Main.storyboard */; };
+		A6CB4FA91BE6B6F10027DF25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CB4FA71BE6B6F10027DF25 /* Main.storyboard */; settings = {ASSET_TAGS = (1, ); }; };
 		A6CB4FAB1BE6B6F10027DF25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6CB4FAA1BE6B6F10027DF25 /* Assets.xcassets */; };
 		A6CB4FAE1BE6B6F10027DF25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CB4FAC1BE6B6F10027DF25 /* LaunchScreen.storyboard */; };
 		A6CB4FB91BE6B6F10027DF25 /* AnonyventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FB81BE6B6F10027DF25 /* AnonyventTests.swift */; };
 		A6CB4FC41BE6B6F10027DF25 /* AnonyventUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB4FC31BE6B6F10027DF25 /* AnonyventUITests.swift */; };
 		A6D71ED51C3E04DF00A5E9EE /* EventsDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D71ED41C3E04DF00A5E9EE /* EventsDetailTableViewCell.swift */; };
+		A6D71EE71C3F516A00A5E9EE /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D71EE61C3F516A00A5E9EE /* MapTableViewCell.swift */; };
 		D8BE9D5283069FAD8A2EC05C /* Pods_Anonyvent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C456624A473CD9F79B074685 /* Pods_Anonyvent.framework */; };
 /* End PBXBuildFile section */
 
@@ -181,7 +181,6 @@
 		5B891B8C1BFB328E000C2BDE /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		818CF6E358130E4BBCC1495B /* Pods-Anonyvent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anonyvent.release.xcconfig"; path = "Pods/Target Support Files/Pods-Anonyvent/Pods-Anonyvent.release.xcconfig"; sourceTree = "<group>"; };
 		A64206CC1C22C4750048510F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../../../../macair/Development/Anonyvent/Anonyvent/DetailViewController.swift; sourceTree = "<group>"; };
-		A67429CC1C3CF7D900FE9A5F /* HomeSwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSwipeViewController.swift; sourceTree = "<group>"; };
 		A67FFDCF1C2418BD001E21AC /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		A69027C31C3B7DAF009B73C4 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +201,7 @@
 		A6CB4FC31BE6B6F10027DF25 /* AnonyventUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonyventUITests.swift; sourceTree = "<group>"; };
 		A6CB4FC51BE6B6F10027DF25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6D71ED41C3E04DF00A5E9EE /* EventsDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailTableViewCell.swift; sourceTree = "<group>"; };
+		A6D71EE61C3F516A00A5E9EE /* MapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapTableViewCell.swift; path = ../../../../macair/Development/Anonyvent/Anonyvent/MapTableViewCell.swift; sourceTree = "<group>"; };
 		C456624A473CD9F79B074685 /* Pods_Anonyvent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Anonyvent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -306,7 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				A6CB4FA31BE6B6F10027DF25 /* AppDelegate.swift */,
-				A67429CC1C3CF7D900FE9A5F /* HomeSwipeViewController.swift */,
 				5B891B8A1BFB3261000C2BDE /* EventsHomeViewController.swift */,
 				A67FFDCF1C2418BD001E21AC /* EventsTableViewCell.swift */,
 				A6D71ED41C3E04DF00A5E9EE /* EventsDetailTableViewCell.swift */,
@@ -314,6 +313,7 @@
 				A6A22E0A1BEACD4300C9852B /* CreateEventViewController.swift */,
 				A6CB4FA71BE6B6F10027DF25 /* Main.storyboard */,
 				A64206CC1C22C4750048510F /* DetailViewController.swift */,
+				A6D71EE61C3F516A00A5E9EE /* MapTableViewCell.swift */,
 				A69027C31C3B7DAF009B73C4 /* CommentTableViewCell.swift */,
 				5B891B881BFB3245000C2BDE /* MainTabBarViewController.swift */,
 				5B891B8C1BFB328E000C2BDE /* MyEventsViewController.swift */,
@@ -412,6 +412,9 @@
 		A6CB4F981BE6B6F10027DF25 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					1,
+				);
 				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Evan Kohout";
@@ -656,7 +659,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6D71ED51C3E04DF00A5E9EE /* EventsDetailTableViewCell.swift in Sources */,
-				A67429CD1C3CF7D900FE9A5F /* HomeSwipeViewController.swift in Sources */,
+				A6D71EE71C3F516A00A5E9EE /* MapTableViewCell.swift in Sources */,
 				5B891B8B1BFB3261000C2BDE /* EventsHomeViewController.swift in Sources */,
 				A6A22ED21BF2C7EC00C9852B /* EventPost.swift in Sources */,
 				5B891B891BFB3245000C2BDE /* MainTabBarViewController.swift in Sources */,
