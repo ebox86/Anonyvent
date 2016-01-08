@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
 
 //    @IBOutlet weak var eventStartDateLabel: UILabel!
@@ -47,6 +47,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         self.eventStartDateLabel.text = eventStartDate
         self.eventTitleLabel.numberOfLines = 2
 */
+
         print("\(currentDeviceUDID) - current")
         print(authorUDID)
         tableView.delegate = self
@@ -145,6 +146,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             } else {
                 cell.lastModifiedLabel.text = ""
             }
+            print(tableView.contentOffset.y)
             return cell
         } else {
             switch segment {
@@ -158,7 +160,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             case 1:
                 let cell = self.tableView.dequeueReusableCellWithIdentifier:forIndexPath:("section3Cell", forIndexPath: indexPath) as! MapTableViewCell
                 self.tableView.rowHeight = 500
-                cell.backgroundColor = UIColor.greenColor()
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
                 return cell
             default:

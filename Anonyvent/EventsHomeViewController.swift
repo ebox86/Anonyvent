@@ -43,11 +43,11 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         // Ask for Authorisation from the User.
         self.locationManager.requestAlwaysAuthorization()
         
-        self.title = "SomeApp"
+        //self.title = "SomeApp"
         
         let navigationBar = navigationController!.navigationBar
         navigationBar.tintColor = UIColor.blueColor()
-        navigationBar.backgroundColor = UIColor.lightGrayColor()
+        navigationBar.backgroundColor = UIColor.greenColor()
         
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
